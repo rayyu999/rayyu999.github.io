@@ -1,0 +1,7 @@
+baseURL = "https://rayyu999.github.io/"
+languageCode = "en-us"
+title = "Ray's Blog"
+
+publishDir = "docs"
+
+theme = "hyde"

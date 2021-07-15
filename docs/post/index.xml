@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Ray&#39;s Blog</title>
+    <link>https://rayyu999.github.io/post/</link>
+    <description>Recent content in Posts on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Jul 2020 23:19:21 +0000</lastBuildDate><atom:link href="https://rayyu999.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Zotero的附件同步</title>
+      <link>https://rayyu999.github.io/post/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/</link>
+      <pubDate>Fri, 10 Jul 2020 23:19:21 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/post/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/</guid>
+      <description>&lt;hr&gt;</description>
+    </item>
+    
+    <item>
+      <title>论文笔记 ABY3: A Mixed Protocol Framework for Machine Learning</title>
+      <link>https://rayyu999.github.io/post/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-aby3-a-mixed-protocol-framework-for-machine-learning/</link>
+      <pubDate>Thu, 18 Jun 2020 20:06:46 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/post/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-aby3-a-mixed-protocol-framework-for-machine-learning/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Payman Mohassel, Peter Rindal&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;CCS 2018&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://dl.acm.org/doi/10.1145/3243734.3243760&#34;&gt;https://dl.acm.org/doi/10.1145/3243734.3243760&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

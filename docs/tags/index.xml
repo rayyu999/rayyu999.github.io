@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Ray&#39;s Blog</title>
+    <link>https://rayyu999.github.io/tags/</link>
+    <description>Recent content in Tags on Ray&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Jul 2020 23:19:21 +0000</lastBuildDate><atom:link href="https://rayyu999.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PaperShip</title>
+      <link>https://rayyu999.github.io/tags/papership/</link>
+      <pubDate>Fri, 10 Jul 2020 23:19:21 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/tags/papership/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zotero</title>
+      <link>https://rayyu999.github.io/tags/zotero/</link>
+      <pubDate>Fri, 10 Jul 2020 23:19:21 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/tags/zotero/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>坚果云</title>
+      <link>https://rayyu999.github.io/tags/%E5%9D%9A%E6%9E%9C%E4%BA%91/</link>
+      <pubDate>Fri, 10 Jul 2020 23:19:21 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/tags/%E5%9D%9A%E6%9E%9C%E4%BA%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linear Regression</title>
+      <link>https://rayyu999.github.io/tags/linear-regression/</link>
+      <pubDate>Thu, 18 Jun 2020 20:06:46 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/tags/linear-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Logistic Regression</title>
+      <link>https://rayyu999.github.io/tags/logistic-regression/</link>
+      <pubDate>Thu, 18 Jun 2020 20:06:46 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/tags/logistic-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MPC</title>
+      <link>https://rayyu999.github.io/tags/mpc/</link>
+      <pubDate>Thu, 18 Jun 2020 20:06:46 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/tags/mpc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Neural Network</title>
+      <link>https://rayyu999.github.io/tags/neural-network/</link>
+      <pubDate>Thu, 18 Jun 2020 20:06:46 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/tags/neural-network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PPML</title>
+      <link>https://rayyu999.github.io/tags/ppml/</link>
+      <pubDate>Thu, 18 Jun 2020 20:06:46 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/tags/ppml/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Secret Sharing</title>
+      <link>https://rayyu999.github.io/tags/secret-sharing/</link>
+      <pubDate>Thu, 18 Jun 2020 20:06:46 +0000</pubDate>
+      
+      <guid>https://rayyu999.github.io/tags/secret-sharing/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
