@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <title>
+        PPML中的2PC对比3PC - Ray&#39;s blog
+      </title>
+        <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    
+    <meta name="theme-color" content="#000000" />
+    
+    <meta http-equiv="window-target" content="_top" />
+    
+    
+    <meta name="description" content="" />
+    <meta name="generator" content="Hugo 0.85.0 with theme pure" />
+    <title>PPML中的2PC对比3PC - Ray&#39;s blog</title>
+    
+    
+    <link rel="stylesheet" href="https://example.com/css/style.min.a85959a41e7abcc0db1f81f44bd264649303417f91b536e87dcde644340fea6d.css">
+    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/9.15.10/styles/github.min.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css" async>
+    <meta property="og:title" content="PPML中的2PC对比3PC" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-06-19T11:03:28+00:00" />
+<meta property="article:modified_time" content="2020-06-19T11:03:28+00:00" />
+
+<meta itemprop="name" content="PPML中的2PC对比3PC">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2020-06-19T11:03:28+00:00" />
+<meta itemprop="dateModified" content="2020-06-19T11:03:28+00:00" />
+<meta itemprop="wordCount" content="1135">
+<meta itemprop="keywords" content="MPC,密码学,PPML,Secret Sharing," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="PPML中的2PC对比3PC"/>
+<meta name="twitter:description" content=""/>
+
+    <!--[if lte IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+      <![endif]-->
+
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+      <![endif]-->
+  </head>
+
+  
+  
+
+  <body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage"><header class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="slimContent">
+      <div class="navbar-header">
+        <div class="profile-block text-center">
+          <a id="avatar" href="https://github.com/rayyu999" target="_blank">
+            <img class="img-circle img-rotate" src="https://example.com/20200417221334.jpg" width="200" height="200">
+          </a>
+          <h2 id="name" class="hidden-xs hidden-sm">Ray</h2>
+          <h3 id="title" class="hidden-xs hidden-sm hidden-md">一只菜狗</h3>
+          <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i>Guangzhou, China</small>
+        </div><div class="search" id="search-form-wrap">
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i
+                        class="icon icon-search"></i></button>
+            </span>
+        </div>
+        <div class="ins-search">
+            <div class="ins-search-mask"></div>
+            <div class="ins-search-container">
+                <div class="ins-input-wrapper">
+                    <input type="text" class="ins-search-input" placeholder="想要查找什么..."
+                        x-webkit-speech />
+                    <button type="button" class="close ins-close ins-selectable" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="ins-section-wrapper">
+                    <div class="ins-section-container"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+        <ul class="nav navbar-nav main-nav">
+            <li class="menu-item menu-item-home">
+                <a href="/">
+                    <i class="icon icon-home-fill"></i>
+                  <span class="menu-title">Home</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-archives">
+                <a href="/posts/">
+                    <i class="icon icon-archives-fill"></i>
+                  <span class="menu-title">Archives</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-categories">
+                <a href="/categories/">
+                    <i class="icon icon-folder"></i>
+                  <span class="menu-title">Categories</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-tags">
+                <a href="/tags/">
+                    <i class="icon icon-tags"></i>
+                  <span class="menu-title">Tags</span>
+                </a>
+            </li>
+            <li class="menu-item menu-item-about">
+                <a href="/about/">
+                    <i class="icon icon-cup-fill"></i>
+                  <span class="menu-title">About</span>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+<aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+            </div>
+        </div>
+    </div>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div id="tag-cloud-list" class="widget-body">
+            
+            
+            <a href="https://example.com/tags/java/" class="tag-list-link" rel="1">java<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/latex/" class="tag-list-link" rel="1">latex<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/linux/" class="tag-list-link" rel="1">linux<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/mpc/" class="tag-list-link" rel="2">mpc<span
+               class="tag-list-count">2</span></a>
+            
+            
+            <a href="https://example.com/tags/mybatis/" class="tag-list-link" rel="1">mybatis<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/mysql/" class="tag-list-link" rel="1">mysql<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/papership/" class="tag-list-link" rel="1">papership<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/ppml/" class="tag-list-link" rel="1">ppml<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/python/" class="tag-list-link" rel="1">python<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/restful/" class="tag-list-link" rel="1">restful<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/secret-sharing/" class="tag-list-link" rel="1">secret-sharing<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/ubuntu/" class="tag-list-link" rel="1">ubuntu<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/zotero/" class="tag-list-link" rel="1">zotero<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/%E5%9D%9A%E6%9E%9C%E4%BA%91/" class="tag-list-link" rel="1">坚果云<span
+               class="tag-list-count">1</span></a>
+            
+            
+            <a href="https://example.com/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="tag-list-link" rel="3">密码学<span
+               class="tag-list-count">3</span></a>
+            
+    </div>
+<script>
+document.onreadystatechange = () => {
+  if (document.readyState === 'complete') {
+    tagCloud('#tag-cloud-list a',  8 ,  20 );
+  }
+};
+
+function tagCloud(where, min, max) {
+  let iMax = 0;
+  let iMin = 0;
+  $(where).each(function() {
+    let weight = Number($(this).attr("rel"));
+    if(iMax < weight) iMax = weight;
+    if(iMin > weight || iMin == 0) iMin = weight;
+  });
+  let step = (max - min)/(iMax - iMin);
+  $(where).each(function() {
+    let weight = $(this).attr("rel") - iMin;
+    $(this).css({"font-size": min + (weight * step) + 'px'});
+  });
+};
+</script>
+</div>
+
+      <div class="widget">
+    <h3 class="widget-title"> 分类</h3>
+    <div class="widget-body">
+        <ul class="category-list">
+            <li class="category-list-item"><a href="https://example.com/categories/coding/" class="category-list-link">coding</a><span class="category-list-count">2</span></li>
+            <li class="category-list-item"><a href="https://example.com/categories/env/" class="category-list-link">env</a><span class="category-list-count">5</span></li>
+            <li class="category-list-item"><a href="https://example.com/categories/papers/" class="category-list-link">papers</a><span class="category-list-count">1</span></li>
+            <li class="category-list-item"><a href="https://example.com/categories/study/" class="category-list-link">study</a><span class="category-list-count">2</span></li>
+        </ul>
+    </div>
+</div>
+      <div class="widget">
+    <h3 class="widget-title"> 标签</h3>
+    <div class="widget-body">
+        <ul class="tag-list">
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/java/" class="tag-list-link">java</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/latex/" class="tag-list-link">latex</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/linux/" class="tag-list-link">linux</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/mpc/" class="tag-list-link">mpc</a><span
+                    class="tag-list-count">2</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/mybatis/" class="tag-list-link">mybatis</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/mysql/" class="tag-list-link">mysql</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/papership/" class="tag-list-link">papership</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/ppml/" class="tag-list-link">ppml</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/python/" class="tag-list-link">python</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/restful/" class="tag-list-link">restful</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/secret-sharing/" class="tag-list-link">secret-sharing</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/ubuntu/" class="tag-list-link">ubuntu</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/zotero/" class="tag-list-link">zotero</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/%E5%9D%9A%E6%9E%9C%E4%BA%91/" class="tag-list-link">坚果云</a><span
+                    class="tag-list-count">1</span></li>
+            
+            
+            <li class="tag-list-item"><a href="https://example.com/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" class="tag-list-link">密码学</a><span
+                    class="tag-list-count">3</span></li>
+            
+        </ul>
+
+    </div>
+</div>
+      
+<div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+        <ul class="recent-post-list list-unstyled no-thumbnail">
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://example.com/2020/12/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" class="title">RESTful api 设计规范</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-12-23 22:48:07 &#43;0000 UTC" itemprop="datePublished">2020-12-23</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://example.com/2020/11/mysql-connector-java%E4%B8%8Emysqljava%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/" class="title">mysql-connector-java与Mysql、Java的对应版本</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-11-20 22:12:58 &#43;0000 UTC" itemprop="datePublished">2020-11-20</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://example.com/2020/11/mybatis-generator-%E4%BD%BF%E7%94%A8/" class="title">Mybatis Generator 使用</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-11-20 22:11:17 &#43;0000 UTC" itemprop="datePublished">2020-11-20</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://example.com/2020/07/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/" class="title">Zotero的附件同步</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-07-10 23:19:21 &#43;0000 UTC" itemprop="datePublished">2020-07-10</time>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="item-inner">
+                    <p class="item-title">
+                        <a href="https://example.com/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/" class="title">PPML中的2PC对比3PC</a>
+                    </p>
+                    <p class="item-date">
+                        <time datetime="2020-06-19 11:03:28 &#43;0000 UTC" itemprop="datePublished">2020-06-19</time>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+  </div>
+</aside>
+
+    
+    
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <h4 class="toc-title">文章目录</h4>
+    <nav id="toc" class="js-toc toc">
+
+    </nav>
+  </div>
+</aside>
+<main class="main" role="main"><div class="content">
+  <article id="-" class="article article-type-" itemscope
+    itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      <h1 itemprop="name">
+  <a
+    class="article-title"
+    href="/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/"
+    >PPML中的2PC对比3PC</a
+  >
+</h1>
+
+      <div class="article-meta">
+        
+<span class="article-date">
+  <i class="icon icon-calendar-check"></i>&nbsp;
+<a href="https://example.com/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/" class="article-date">
+  <time datetime="2020-06-19 11:03:28 &#43;0000 UTC" itemprop="datePublished">2020-06-19</time>
+</a>
+</span>
+<span class="article-category">
+  <i class="icon icon-folder"></i>&nbsp;
+  <a class="article-category-link" href="/categories/study/"> Study </a>
+</span>  
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>&nbsp;
+    <a class="article-tag-link" href="/tags/mpc/"> MPC </a>
+    <a class="article-tag-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"> 密码学 </a>
+    <a class="article-tag-link" href="/tags/ppml/"> PPML </a>
+    <a class="article-tag-link" href="/tags/secret-sharing/"> Secret Sharing </a>
+  </span>
+
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1135字</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3分 </span>
+      </div>
+    </div>
+    <div class="article-entry marked-body js-toc-content" itemprop="articleBody">
+      <hr>
+<h1 id="共享语义">共享语义</h1>
+<p>不同的论文可能设置不太一样，这里2PC我参考的是<a href="https://yuyingwai.cn/2020/06/17/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-SecureML-A-System-for-Scalable-Privacy-Preserving-Machine-Learning/">SecureML</a>中的设置，3PC参考的是<a href="https://yuyingwai.cn/2020/06/18/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-ABY3-A-Mixed-Protocol-Framework-for-Machine-Learning/">ABY3</a>和<a href="https://yuyingwai.cn/2020/04/20/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-ASTRA-High-Throughput-3PC-over-Rings-with-Application-to-Secure-Prediction/">ASTRA</a>中的设置。即对于一个数 $x$ 的算术共享，2PC的情况是将其拆成两份 $x_0$ 和 $x_1$，它们的和为 $x$，两方各拥有一份；3PC的情况是将其拆成三份 $x_0, x_1, x_2$，三方各拥有其中的两份，例如 $P_0$ 有 $(x_0, x_2)$，任意两方即可重构出 $x$。</p>
+<p>布尔共享是各份额二进制表示的每一位异或等于原秘密 $x$ 的对应位。</p>
+<p><img src="http://images.yingwai.top/picgo/2vs3ppt2.png" alt=""></p>
+<h1 id="加法">加法</h1>
+<p>2PC和3PC下算术共享的加法是一样的，都只需要在本地将对应数的份额相加，不需要交互。</p>
+<h1 id="乘法">乘法</h1>
+<h2 id="2pc">2PC</h2>
+<p>乘法则有比较大的区别，首先是2PC，计算乘法 $ab = c$ 需要生成额外的乘法三元组 $(u,v,z)$ 满足 $z = uv$，这个三元组中的每个数也是在两方间加法共享的。</p>
+<p>首先两方交互计算 $e = a-u$ 和 $f = b - v$，然后 $P_i$ 将结果 $c = ab$ 的份额设为 $c_i = -ief+a_if+eb_i+z_i$，其中 $i \in {0,1}$。</p>
+<p><img src="http://images.yingwai.top/picgo/2vs3ppt1.png" alt=""></p>
+<h2 id="3pc">3PC</h2>
+<p>接下来是3PC，由于重复共享的设置（各方拥有三个份额中的两个），计算乘法时几乎不需要交互。计算 $x,y$ 两个数的积 $xy = z$ 时，观察到
+$$
+\begin{align}
+xy &amp;= (x_0 + x_1 + x_2)(y_0 + y_1 + y_2) \<br>
+&amp;= x_0y_0 + x_0y_1 + x_0y_2 \<br>
+&amp;+ x_1y_0 + x_1y_1 + x_1y_2 \<br>
+&amp;+ x_2y_0 + x_2y_1 + x_2y_2
+\end{align}
+$$
+可以看到拆开的式子一共有九项，我们可以直接让 $P_i$ 各计算其中三项，令
+$$
+z_0 = x_0y_0 + x_0y_2 + x_2y_0 \<br>
+z_1 = x_0y_1 + x_1y_0 + x_1y_1 \<br>
+z_2 = x_1y_2 + x_2y_1 + x_2y_2
+$$
+这时结果 $z$ 就以加法共享的方式在三方中共享，最后 $P_i$ 将自己的 $z_i$ 发送给 $P_{i+1}$（$i=2$ 时 $i+1 = 0$），$z$ 就重新在三方中重复共享了。</p>
+<p><img src="http://images.yingwai.top/picgo/aby3ppt3.png" alt=""></p>
+<p>可以看到计算过程中只涉及本地操作，只有在生成重复共享时才需要三方各一次发送，效率比2PC要高。</p>
+<h1 id="比较">比较</h1>
+<p>比较两个数 $u,v$ 的大小，等同于提取 $a = u-v$ 的 $\mbox{msb}$，$u&gt;v \rightarrow u-v&gt;0$ 时 $\mbox{msb}(a) = 0$，反之 $\mbox{msb}(a) = 1$。两方下没有给出具体的细节，<a href="https://yuyingwai.cn/2020/06/17/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-SecureML-A-System-for-Scalable-Privacy-Preserving-Machine-Learning/">SecureML</a>中只提到使用乱码电路，这是一个比较昂贵的协议（将算术共享转换为布尔或姚共享也需要开销），而三方下的<a href="https://yuyingwai.cn/2020/04/20/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-ASTRA-High-Throughput-3PC-over-Rings-with-Application-to-Secure-Prediction/">ASTRA</a>中则利用了秘密共享方案的不对称性，下面的协议是基于 $\mbox{sign}(r \cdot a) = \mbox{sign}(r) \oplus \mbox{sign}(a)$ 的事实：</p>
+<p>首先在离线阶段，$P_1,P_2$ 共同选取两个随机数 $r, r' \in \mathbb{Z}<em>{2^l}$ 并设 $p = \mbox{msb}(r)$，然后各方可以非交互式地设置 $p$ 的布尔共享 $[![p]!]^{\rm B}</em>{P_0} = (0,0)$, $[![p]!]^{\rm B}<em>{P_1} = (p,0)$ 以及 $[![p]!]^{\rm B}</em>{P_2} = (p,0)$。</p>
+<p><img src="http://images.yingwai.top/picgo/2vs3ppt3.png" alt=""></p>
+<p>到了在线阶段，$P_1$ 和 $P_2$ 设置它们对 $a$ 的份额，使得它们两方各自的份额之和为 $a$ ：$P_1$ 设 $[a]<em>{P_1} = x_0+x_1$，$P_2$ 设 $[a]</em>{P_2}=x_2$。然后 $P_1$ 和 $P_2$ 利用离线阶段生成的随机数 $r'$ 对 $[ra]_{P_i}$ 进行盲化并发送给 $P_0$（由于 $P_0$ 知道 $x_2$，若不进行盲化则会暴露 $r$ 给 $P_0$），$P_0$ 重构 $ra$ 并设 $q = \mbox{msb}(ra)$，然后生成 $q$ 在三方中的布尔共享。最后各方在本地计算 $[![\mbox{msb}(a)]!]^B = [![p]!]^B \oplus [![q]!]^B$，此时 $a$ 的符号位在三方中是布尔共享的。</p>
+<p><img src="http://images.yingwai.top/picgo/2vs3ppt4.png" alt=""></p>
+    </div>
+    <div class="article-footer">
+<blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接: </strong>
+      <a href="https://example.com/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/" title="PPML中的2PC对比3PC" target="_blank" rel="external">https://example.com/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>License: </strong>
+        <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external"></a>
+    </li>
+  </ul>
+</blockquote>
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/rayyu999" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://example.com/20200417221334.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/rayyu999" target="_blank"><span class="text-dark">Ray</span><small class="ml-1x">一只菜狗</small></a></h3>
+        <div>Do not go gentle into that good night</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+    </div>
+  </article>
+</div><nav class="bar bar-footer clearfix" data-stick-bottom>
+    <div class="bar-inner">
+        <ul class="pager pull-left">
+            <li class="prev">
+                <a href="https://example.com/2020/05/%E4%BD%BF%E7%94%A8you-get%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E8%A7%86%E9%A2%91/" title="使用you-get下载网址视频"><i
+                        class="icon icon-angle-left"
+                        aria-hidden="true"></i><span>&nbsp;&nbsp;下一篇</span></a>
+            </li>
+            <li class="next">
+                <a href="https://example.com/2020/07/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/"
+                    title="Zotero的附件同步"><span>上一篇&nbsp;&nbsp;</span><i
+                        class="icon icon-angle-right" aria-hidden="true"></i></a>
+            </li>
+            
+            <li class="toggle-toc">
+                <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false"
+                    title="文章目录" role="button">
+                    <span>[&nbsp;</span><span>文章目录</span>
+                    <i class="text-collapsed icon icon-anchor"></i>
+                    <i class="text-in icon icon-close"></i>
+                    <span>]</span>
+                </a>
+            </li>
+        </ul>
+        <div class="bar-right">
+            <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter"
+                data-mobile-sites="weibo,qq,qzone"></div>
+        </div>
+    </div>
+</nav>
+
+
+</main><footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+<ul class="social-links">
+    <li><a href="https://github.com/rayyu999" target="_blank" title="github" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-github"></i></a></li>
+    <li><a href="https://example.com/index.xml" target="_blank" title="rss" data-toggle=tooltip data-placement=top >
+            <i class="icon icon-rss"></i></a></li>
+</ul>
+  <div class="copyright">
+    &copy;2021  -
+    2021
+    <div class="publishby">
+        Theme by <a href="https://github.com/xiaoheiAh" target="_blank"> xiaoheiAh </a>base on<a href="https://github.com/xiaoheiAh/hugo-theme-pure" target="_blank"> pure</a>.
+    </div>
+    
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+            showMathMenu: false, //disables context menu
+            tex2jax: {
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+           }
+    });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/highlight.min.js"></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/python.min.js" defer></script>
+<script type="text/javascript" src="https://cdn.staticfile.org/highlight.js/9.15.10/languages/javascript.min.js" defer></script><script>
+    hljs.configure({
+        tabReplace: '    ', 
+        classPrefix: ''     
+        
+    })
+    hljs.initHighlightingOnLoad();
+</script>
+<script src="https://example.com/js/application.min.a94ab19cb63a95c8d7fbd7b85cab3ddeea8c369bdf75b9cab6708787ead123af.js"></script>
+<script src="https://example.com/js/plugin.min.19c5bcb2fb0789ab4f2b7834e5ceb5e92635645605bab902c1024b25f1502364.js"></script>
+
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(未命名)',
+            },
+            ROOT_URL: 'https:\/\/example.com\/',
+            CONTENT_URL: 'https:\/\/example.com\/\/searchindex.json ',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script type="text/javascript" src="https://example.com/js/insight.min.4a2d52de4bfff73e0c688404fe3d17c9a3ae12d9888e1e1ac9c690e4890de2ded50fe55f2b819c2ba55435a76f396f3ea6805765f0b0af5635cdf74ea459eab0.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script>
+    tocbot.init({
+        
+        tocSelector: '.js-toc',
+        
+        contentSelector: '.js-toc-content',
+        
+        headingSelector: 'h1, h2, h3',
+        
+        hasInnerContainers: true,
+    });
+</script>
+
+
+  </body>
+</html>

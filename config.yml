@@ -1,7 +1,10 @@
 baseURL: https://example.com/
 theme: pure
 title: Ray's blog
-copyright: CC BY 4.0 CN
+
+publishDir: docs
+
+copyright: 
 defaultContentLanguage: zh  # en/zh/...
 footnoteReturnLinkContents: ↩
 hasCJKLanguage: true
@@ -65,7 +68,7 @@ menu:
 
 
 params:
-  since: 2021
+  since: 2020
   dateFormatToUse: "2006-01-02"
   enablePostCopyright: true
   copyright_link: http://creativecommons.org/licenses/by/4.0/deed.zh
@@ -120,9 +123,9 @@ params:
       enabled: true
       width: 40
       height: 40
-      url: jm16.ico
+      url: jm32.ico
     title: Hugo # 页面title
-    favicon: jm16.ico
+    favicon: jm32.ico
     board: "" # 公告牌
 
   # Share
