@@ -1,0 +1,7 @@
+baseURL = "https://rayyu999.github.io/"
+languageCode = "zh"
+title = "Ray's Blog"
+
+publishDir = "docs"
+
+theme = "pure"
