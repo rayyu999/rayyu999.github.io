@@ -7,7 +7,7 @@ tags: ["LaTeX"]
 
 图片来源：https://blog.csdn.net/caiandyong/article/details/53351737
 
-<!--more-->
+
 
 # 希腊字母、数学构造、定界符、大型运算符以及标准函数名
 

@@ -5,11 +5,7 @@ categories: ["Env"]
 tags: ["Python"]
 ---
 
-----
 
-
-
-<!--more-->
 
 you-get是基于Python开发的，实际它不只支持视频下载，还支持图片、音乐等。而且，只要视频的地址，一行代码即可。
 

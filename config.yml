@@ -123,9 +123,9 @@ params:
       enabled: true
       width: 40
       height: 40
-      url: jm32.ico
+      url: favicon.ico
     title: Hugo # 页面title
-    favicon: jm32.ico
+    favicon: favicon.ico
     board: "" # 公告牌
 
   # Share

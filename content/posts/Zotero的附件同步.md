@@ -5,9 +5,7 @@ categories: ["Env"]
 tags: ["Zotero", "坚果云", "PaperShip"]
 ---
 
------
 
-<!--more-->
 
 Zotero的存储空间只有100M，不付费的话使用起来肯定不够。因此可以使用坚果云来同步附件，这样做的好处是ios上的PaperShip也可以通过WebDAV读取资料。
 

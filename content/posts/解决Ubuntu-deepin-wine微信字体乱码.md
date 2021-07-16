@@ -5,11 +5,7 @@ categories: ["Env"]
 tags: ["Ubuntu", "Linux"]
 ---
 
-----
 
-
-
-<!--more-->
 
 # 解决乱码+修改字体(微软雅黑)
 

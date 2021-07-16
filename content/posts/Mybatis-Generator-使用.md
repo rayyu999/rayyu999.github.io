@@ -9,7 +9,7 @@ tags: ["Mybatis"]
 
 MyBatis Generator工具用于将数据库中的表反转成对应的 Domain、XML文件 和 对应的 DAO  Java文件。
 
-<!--more-->
+
 
 
 
