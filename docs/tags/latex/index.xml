@@ -2,110 +2,110 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LaTeX on Ray&#39;s blog</title>
-    <link>https://example.com/tags/latex/</link>
+    <link>https://rayyu999.github.io/tags/latex/</link>
     <description>Recent content in LaTeX on Ray&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 26 Apr 2020 21:19:50 +0000</lastBuildDate>
     
-        <atom:link href="https://example.com/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://rayyu999.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>RESTful api 设计规范</title>
-      <link>https://example.com/2020/12/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/</link>
+      <link>https://rayyu999.github.io/2020/12/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/</link>
       <pubDate>Wed, 23 Dec 2020 22:48:07 +0000</pubDate>
       
-      <guid>https://example.com/2020/12/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/</guid>
+      <guid>https://rayyu999.github.io/2020/12/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/</guid>
       <description>&lt;p&gt;目前比较流行的一套接口规范就是 RESTful api，REST（Representational State Transfer）,中文翻译叫&amp;quot;表述性状态转移&amp;quot;,它首次出现在 2000 年 Roy Fielding 的博士论文中，Roy Fielding 是 HTTP 规范的主要编写者之一。他在论文中提到：&amp;ldquo;我这篇文章的写作目的，就是想在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。REST 指的是一组架构约束条件和原则。&amp;ldquo;如果一个架构符合 REST 的约束条件和原则，我们就称它为 RESTful 架构，REST 其实并没有创造新的技术、组件或服务，在我的理解中，它更应该是一种理念、一种思想，利用 Web 的现有特征和能力，更好地诠释和体现现有 web 标准中的一些准则和约束。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>mysql-connector-java与Mysql、Java的对应版本</title>
-      <link>https://example.com/2020/11/mysql-connector-java%E4%B8%8Emysqljava%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/</link>
+      <link>https://rayyu999.github.io/2020/11/mysql-connector-java%E4%B8%8Emysqljava%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/</link>
       <pubDate>Fri, 20 Nov 2020 22:12:58 +0000</pubDate>
       
-      <guid>https://example.com/2020/11/mysql-connector-java%E4%B8%8Emysqljava%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/</guid>
+      <guid>https://rayyu999.github.io/2020/11/mysql-connector-java%E4%B8%8Emysqljava%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/</guid>
       <description>&lt;hr&gt;</description>
     </item>
     
     <item>
       <title>Mybatis Generator 使用</title>
-      <link>https://example.com/2020/11/mybatis-generator-%E4%BD%BF%E7%94%A8/</link>
+      <link>https://rayyu999.github.io/2020/11/mybatis-generator-%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Fri, 20 Nov 2020 22:11:17 +0000</pubDate>
       
-      <guid>https://example.com/2020/11/mybatis-generator-%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://rayyu999.github.io/2020/11/mybatis-generator-%E4%BD%BF%E7%94%A8/</guid>
       <description>&lt;p&gt;MyBatis Generator工具用于将数据库中的表反转成对应的 Domain、XML文件 和 对应的 DAO  Java文件。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Zotero的附件同步</title>
-      <link>https://example.com/2020/07/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/</link>
+      <link>https://rayyu999.github.io/2020/07/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/</link>
       <pubDate>Fri, 10 Jul 2020 23:19:21 +0000</pubDate>
       
-      <guid>https://example.com/2020/07/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/</guid>
+      <guid>https://rayyu999.github.io/2020/07/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/</guid>
       <description>&lt;hr&gt;</description>
     </item>
     
     <item>
       <title>PPML中的2PC对比3PC</title>
-      <link>https://example.com/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/</link>
+      <link>https://rayyu999.github.io/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/</link>
       <pubDate>Fri, 19 Jun 2020 11:03:28 +0000</pubDate>
       
-      <guid>https://example.com/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/</guid>
+      <guid>https://rayyu999.github.io/2020/06/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/</guid>
       <description>&lt;hr&gt;</description>
     </item>
     
     <item>
       <title>使用you-get下载网址视频</title>
-      <link>https://example.com/2020/05/%E4%BD%BF%E7%94%A8you-get%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E8%A7%86%E9%A2%91/</link>
+      <link>https://rayyu999.github.io/2020/05/%E4%BD%BF%E7%94%A8you-get%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E8%A7%86%E9%A2%91/</link>
       <pubDate>Wed, 20 May 2020 18:50:10 +0000</pubDate>
       
-      <guid>https://example.com/2020/05/%E4%BD%BF%E7%94%A8you-get%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E8%A7%86%E9%A2%91/</guid>
+      <guid>https://rayyu999.github.io/2020/05/%E4%BD%BF%E7%94%A8you-get%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E8%A7%86%E9%A2%91/</guid>
       <description>&lt;hr&gt;</description>
     </item>
     
     <item>
       <title>LaTeX常用符号表示方法</title>
-      <link>https://example.com/2020/04/latex%E5%B8%B8%E7%94%A8%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/</link>
+      <link>https://rayyu999.github.io/2020/04/latex%E5%B8%B8%E7%94%A8%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/</link>
       <pubDate>Sun, 26 Apr 2020 21:19:50 +0000</pubDate>
       
-      <guid>https://example.com/2020/04/latex%E5%B8%B8%E7%94%A8%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://rayyu999.github.io/2020/04/latex%E5%B8%B8%E7%94%A8%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/</guid>
       <description>&lt;p&gt;图片来源：https://blog.csdn.net/caiandyong/article/details/53351737&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>不经意传输（Oblivious Transfer）</title>
-      <link>https://example.com/2020/04/%E4%B8%8D%E7%BB%8F%E6%84%8F%E4%BC%A0%E8%BE%93oblivious-transfer/</link>
+      <link>https://rayyu999.github.io/2020/04/%E4%B8%8D%E7%BB%8F%E6%84%8F%E4%BC%A0%E8%BE%93oblivious-transfer/</link>
       <pubDate>Sat, 25 Apr 2020 16:22:21 +0000</pubDate>
       
-      <guid>https://example.com/2020/04/%E4%B8%8D%E7%BB%8F%E6%84%8F%E4%BC%A0%E8%BE%93oblivious-transfer/</guid>
+      <guid>https://rayyu999.github.io/2020/04/%E4%B8%8D%E7%BB%8F%E6%84%8F%E4%BC%A0%E8%BE%93oblivious-transfer/</guid>
       <description>&lt;p&gt;&lt;em&gt;设S有一个秘密，想以1/2的概率传递给R，即B有50%的机会收到这个秘密，另外50%的机会什么也没有收到，协议执行完后，B知道自己是否收到了这个秘密，但S却不知道R是否收到了这个秘密。这种协议就称为不经意传输协议。&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>解决Ubuntu deepin-wine微信字体乱码</title>
-      <link>https://example.com/2020/04/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</link>
+      <link>https://rayyu999.github.io/2020/04/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</link>
       <pubDate>Fri, 24 Apr 2020 00:30:22 +0000</pubDate>
       
-      <guid>https://example.com/2020/04/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</guid>
+      <guid>https://rayyu999.github.io/2020/04/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</guid>
       <description>&lt;hr&gt;</description>
     </item>
     
     <item>
       <title>CCF推荐国际学术会议和期刊目录（网络与信息安全）</title>
-      <link>https://example.com/2020/04/ccf%E6%8E%A8%E8%8D%90%E5%9B%BD%E9%99%85%E5%AD%A6%E6%9C%AF%E4%BC%9A%E8%AE%AE%E5%92%8C%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</link>
+      <link>https://rayyu999.github.io/2020/04/ccf%E6%8E%A8%E8%8D%90%E5%9B%BD%E9%99%85%E5%AD%A6%E6%9C%AF%E4%BC%9A%E8%AE%AE%E5%92%8C%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</link>
       <pubDate>Mon, 20 Apr 2020 19:43:26 +0000</pubDate>
       
-      <guid>https://example.com/2020/04/ccf%E6%8E%A8%E8%8D%90%E5%9B%BD%E9%99%85%E5%AD%A6%E6%9C%AF%E4%BC%9A%E8%AE%AE%E5%92%8C%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</guid>
+      <guid>https://rayyu999.github.io/2020/04/ccf%E6%8E%A8%E8%8D%90%E5%9B%BD%E9%99%85%E5%AD%A6%E6%9C%AF%E4%BC%9A%E8%AE%AE%E5%92%8C%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://www.ccf.org.cn/c/2019-04-25/663625.shtml&#34;&gt;https://www.ccf.org.cn/c/2019-04-25/663625.shtml&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://example.com/about/</link>
+      <link>https://rayyu999.github.io/about/</link>
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/about/</guid>
+      <guid>https://rayyu999.github.io/about/</guid>
       <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
 Hugo makes use of a variety of open source projects including:
  https://github.</description>
