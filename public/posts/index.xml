@@ -1,0 +1,78 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有文章 - Ray&#39;s Blog</title>
+        <link>https://rayyu999.github.io/posts/</link>
+        <description>所有文章 | Ray&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuyingwai@outlook (Ray)</managingEditor>
+            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 23 Dec 2020 22:48:07 &#43;0000</lastBuildDate><atom:link href="https://rayyu999.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>RESTful api 设计规范</title>
+    <link>https://rayyu999.github.io/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/</link>
+    <pubDate>Wed, 23 Dec 2020 22:48:07 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/</guid>
+    <description><![CDATA[<p>目前比较流行的一套接口规范就是 RESTful api，REST（Representational State Transfer）,中文翻译叫&quot;表述性状态转移&quot;,它首次出现在 2000 年 Roy Fielding 的博士论文中，Roy Fielding 是 HTTP 规范的主要编写者之一。他在论文中提到：&ldquo;我这篇文章的写作目的，就是想在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。REST 指的是一组架构约束条件和原则。&ldquo;如果一个架构符合 REST 的约束条件和原则，我们就称它为 RESTful 架构，REST 其实并没有创造新的技术、组件或服务，在我的理解中，它更应该是一种理念、一种思想，利用 Web 的现有特征和能力，更好地诠释和体现现有 web 标准中的一些准则和约束。</p>]]></description>
+</item><item>
+    <title>mysql-connector-java与Mysql、Java的对应版本</title>
+    <link>https://rayyu999.github.io/mysql-connector-java%E4%B8%8Emysqljava%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/</link>
+    <pubDate>Fri, 20 Nov 2020 22:12:58 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/mysql-connector-java%E4%B8%8Emysqljava%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%AC/</guid>
+    <description><![CDATA[mysql-connector-java与Mysql对应版本 Connector/J version Driver Type JDBC version MySQL Server version Status 5.1 4 3.0, 4.0, 4.1, 4.2 5.6*, 5.7*, 8.0* General availability 8.0 4 4.2 5.6, 5.7, 8.0 General availability. Recommended version MySQL Connector/J 8.0 is highly recommended for use with]]></description>
+</item><item>
+    <title>Mybatis Generator 使用</title>
+    <link>https://rayyu999.github.io/mybatis-generator-%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Fri, 20 Nov 2020 22:11:17 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/mybatis-generator-%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[MyBatis Generator工具用于将数据库中的表反转成对应的 Domain、XML文件 和 对应的 DAO Java文件。 引入依赖 在 pom.xml 中添加下面的配置： 1 2 3 4]]></description>
+</item><item>
+    <title>Zotero的附件同步</title>
+    <link>https://rayyu999.github.io/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/</link>
+    <pubDate>Fri, 10 Jul 2020 23:19:21 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/</guid>
+    <description><![CDATA[Zotero的存储空间只有100M，不付费的话使用起来肯定不够。因此可以使用坚果云来同步附件，这样做的好处是ios上的PaperShip也可]]></description>
+</item><item>
+    <title>PPML中的2PC对比3PC</title>
+    <link>https://rayyu999.github.io/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/</link>
+    <pubDate>Fri, 19 Jun 2020 11:03:28 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/</guid>
+    <description><![CDATA[共享语义 不同的论文可能设置不太一样，这里2PC我参考的是SecureML中的设置，3PC参考的是ABY3和ASTRA中的设置。即对于一个数 $x$]]></description>
+</item><item>
+    <title>使用you-get下载网址视频</title>
+    <link>https://rayyu999.github.io/%E4%BD%BF%E7%94%A8you-get%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E8%A7%86%E9%A2%91/</link>
+    <pubDate>Wed, 20 May 2020 18:50:10 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/%E4%BD%BF%E7%94%A8you-get%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E8%A7%86%E9%A2%91/</guid>
+    <description><![CDATA[you-get是基于Python开发的，实际它不只支持视频下载，还支持图片、音乐等。而且，只要视频的地址，一行代码即可。 安装you-get 安]]></description>
+</item><item>
+    <title>LaTeX常用符号表示方法</title>
+    <link>https://rayyu999.github.io/latex%E5%B8%B8%E7%94%A8%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/</link>
+    <pubDate>Sun, 26 Apr 2020 21:19:50 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/latex%E5%B8%B8%E7%94%A8%E7%AC%A6%E5%8F%B7%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/</guid>
+    <description><![CDATA[图片来源：https://blog.csdn.net/caiandyong/article/details/53351737 希腊字母、数学构]]></description>
+</item><item>
+    <title>不经意传输（Oblivious Transfer）</title>
+    <link>https://rayyu999.github.io/%E4%B8%8D%E7%BB%8F%E6%84%8F%E4%BC%A0%E8%BE%93oblivious-transfer/</link>
+    <pubDate>Sat, 25 Apr 2020 16:22:21 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/%E4%B8%8D%E7%BB%8F%E6%84%8F%E4%BC%A0%E8%BE%93oblivious-transfer/</guid>
+    <description><![CDATA[设S有一个秘密，想以1/2的概率传递给R，即B有50%的机会收到这个秘密，另外50%的机会什么也没有收到，协议执行完后，B知道自己是否收到了]]></description>
+</item><item>
+    <title>解决Ubuntu deepin-wine微信字体乱码</title>
+    <link>https://rayyu999.github.io/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</link>
+    <pubDate>Fri, 24 Apr 2020 00:30:22 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</guid>
+    <description><![CDATA[解决乱码+修改字体(微软雅黑) 下载微软雅黑字体,msyh.ttc 添加字体 1 $ cp msyh.ttc ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts 修改系统注册表 1 $ gedit ~/.deepinwine/Deepin-WeChat/system.reg 修改以下两行 1 2 &#34;MS Shell Dlg&#34;=&#34;msyh&#34; &#34;MS Shell Dlg 2&#34;=&#34;msyh&#34; 字体注]]></description>
+</item><item>
+    <title>CCF推荐国际学术会议和期刊目录（网络与信息安全）</title>
+    <link>https://rayyu999.github.io/ccf%E6%8E%A8%E8%8D%90%E5%9B%BD%E9%99%85%E5%AD%A6%E6%9C%AF%E4%BC%9A%E8%AE%AE%E5%92%8C%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</link>
+    <pubDate>Mon, 20 Apr 2020 19:43:26 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/ccf%E6%8E%A8%E8%8D%90%E5%9B%BD%E9%99%85%E5%AD%A6%E6%9C%AF%E4%BC%9A%E8%AE%AE%E5%92%8C%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</guid>
+    <description><![CDATA[https://www.ccf.org.cn/c/2019-04-25/663625.shtml 中国计算机学会推荐国际学术期刊（网络与信息安全） A类 序号 刊物简称 刊物全称 出版社 网址 1 TDSC IEEE Transactions on Dependable and Secure Computing IEEE http://dblp.uni-trier.de/db/journals/tdsc/ 2 TIFS IEEE Transactions on Information Forensics and Security IEEE http://dblp.uni-trier.de/db/journals/tifs/ 3 Journal of Cryptology Springer http://dblp.uni-trier.de/db/journals/joc/]]></description>
+</item></channel>
+</rss>

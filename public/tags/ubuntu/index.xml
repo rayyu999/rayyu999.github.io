@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Ubuntu - 标签 - Ray&#39;s Blog</title>
+        <link>https://rayyu999.github.io/tags/ubuntu/</link>
+        <description>Ubuntu - 标签 - Ray&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuyingwai@outlook (Ray)</managingEditor>
+            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 24 Apr 2020 00:30:22 &#43;0000</lastBuildDate><atom:link href="https://rayyu999.github.io/tags/ubuntu/" rel="self" type="application/rss+xml" /><item>
+    <title>解决Ubuntu deepin-wine微信字体乱码</title>
+    <link>https://rayyu999.github.io/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</link>
+    <pubDate>Fri, 24 Apr 2020 00:30:22 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</guid>
+    <description><![CDATA[解决乱码+修改字体(微软雅黑) 下载微软雅黑字体,msyh.ttc 添加字体 1 $ cp msyh.ttc ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts 修改系统注册表 1 $ gedit ~/.deepinwine/Deepin-WeChat/system.reg 修改以下两行 1 2 &#34;MS Shell Dlg&#34;=&#34;msyh&#34; &#34;MS Shell Dlg 2&#34;=&#34;msyh&#34; 字体注]]></description>
+</item></channel>
+</rss>
