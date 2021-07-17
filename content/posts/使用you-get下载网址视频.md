@@ -23,7 +23,7 @@ you-get是基于Python开发的，实际它不只支持视频下载，还支持�
 $ pip3 install you-get
 ```
 
-![](http://images.yingwai.top/picgo/yougetf1.png)
+![](https://images.yingwai.top/picgo/yougetf1.png)
 
 
 
@@ -59,7 +59,7 @@ $ you-get '视频地址URL'
 
 这里以B站某视频为例：
 
-![](http://images.yingwai.top/picgo/yougetf2.png)
+![](https://images.yingwai.top/picgo/yougetf2.png)
 
 下载好的视频存放在系统盘的用户目录下。
 
@@ -75,7 +75,7 @@ $ you-get -i '视频地址URL'
 
 用刚刚下载的视频测试，结果如下：
 
-![](http://images.yingwai.top/picgo/yougetf3.png)
+![](https://images.yingwai.top/picgo/yougetf3.png)
 
 可以看到它的默认设置不是MP4格式的视频，如果想要换成这种格式，可以在命令行输入：
 
@@ -91,4 +91,5 @@ $ you-get --itag=18 '视频地址URL'
 
 这里列出支持的国外网站：
 
-![](http://images.yingwai.top/picgo/yougetf4.jpg)
+![](https://images.yingwai.top/picgo/yougetf4.jpg)
+

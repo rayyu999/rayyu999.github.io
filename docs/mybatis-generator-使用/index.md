@@ -103,6 +103,6 @@ public class MBGTest {
 
 运行该类，即可生成对应的实体类以及mapper文件。
 
-![](http://images.yingwai.top/picgo/20201119103520.png)
+![](https://images.yingwai.top/picgo/20201119103520.png)
 
 

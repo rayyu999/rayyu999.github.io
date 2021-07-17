@@ -9,7 +9,7 @@
 
 布尔共享是各份额二进制表示的每一位异或等于原秘密 $x$ 的对应位。
 
-![](http://images.yingwai.top/picgo/2vs3ppt2.png)
+![](https://images.yingwai.top/picgo/2vs3ppt2.png)
 
 
 
@@ -27,7 +27,7 @@
 
 首先两方交互计算 $e = a-u$ 和 $f = b - v$，然后 $P_i$ 将结果 $c = ab$ 的份额设为 $c_i = -ief+a_if+eb_i+z_i$，其中 $i \in \{0,1\}$。
 
-![](http://images.yingwai.top/picgo/2vs3ppt1.png)
+![](https://images.yingwai.top/picgo/2vs3ppt1.png)
 
 
 
@@ -50,7 +50,7 @@ z_2 = x_1y_2 + x_2y_1 + x_2y_2
 $$
 这时结果 $z$ 就以加法共享的方式在三方中共享，最后 $P_i$ 将自己的 $z_i$ 发送给 $P_{i+1}$（$i=2$ 时 $i+1 = 0$），$z$ 就重新在三方中重复共享了。
 
-![](http://images.yingwai.top/picgo/aby3ppt3.png)
+![](https://images.yingwai.top/picgo/aby3ppt3.png)
 
 可以看到计算过程中只涉及本地操作，只有在生成重复共享时才需要三方各一次发送，效率比2PC要高。
 
@@ -62,10 +62,10 @@ $$
 
 首先在离线阶段，$P_1,P_2$ 共同选取两个随机数 $r, r' \in \mathbb{Z}_{2^l}$ 并设 $p = \mbox{msb}(r)$，然后各方可以非交互式地设置 $p$ 的布尔共享 $[\![p]\!]^{\rm B}_{P_0} = (0,0)$, $[\![p]\!]^{\rm B}_{P_1} = (p,0)$ 以及 $[\![p]\!]^{\rm B}_{P_2} = (p,0)$。
 
-![](http://images.yingwai.top/picgo/2vs3ppt3.png)
+![](https://images.yingwai.top/picgo/2vs3ppt3.png)
 
 到了在线阶段，$P_1$ 和 $P_2$ 设置它们对 $a$ 的份额，使得它们两方各自的份额之和为 $a$ ：$P_1$ 设 $[a]_{P_1} = x_0+x_1$，$P_2$ 设 $[a]_{P_2}=x_2$。然后 $P_1$ 和 $P_2$ 利用离线阶段生成的随机数 $r'$ 对 $[ra]_{P_i}$ 进行盲化并发送给 $P_0$（由于 $P_0$ 知道 $x_2$，若不进行盲化则会暴露 $r$ 给 $P_0$），$P_0$ 重构 $ra$ 并设 $q = \mbox{msb}(ra)$，然后生成 $q$ 在三方中的布尔共享。最后各方在本地计算 $[\![\mbox{msb}(a)]\!]^B = [\![p]\!]^B \oplus [\![q]\!]^B$，此时 $a$ 的符号位在三方中是布尔共享的。
 
-![](http://images.yingwai.top/picgo/2vs3ppt4.png)
+![](https://images.yingwai.top/picgo/2vs3ppt4.png)
 
 
