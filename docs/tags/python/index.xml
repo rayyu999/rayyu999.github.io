@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Python - 标签 - Ray&#39;s Blog</title>
+        <link>https://rayyu999.github.io/tags/python/</link>
+        <description>Python - 标签 - Ray&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuyingwai@outlook (Ray)</managingEditor>
+            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 20 May 2020 18:50:10 &#43;0000</lastBuildDate><atom:link href="https://rayyu999.github.io/tags/python/" rel="self" type="application/rss+xml" /><item>
+    <title>使用you-get下载网址视频</title>
+    <link>https://rayyu999.github.io/%E4%BD%BF%E7%94%A8you-get%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E8%A7%86%E9%A2%91/</link>
+    <pubDate>Wed, 20 May 2020 18:50:10 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/%E4%BD%BF%E7%94%A8you-get%E4%B8%8B%E8%BD%BD%E7%BD%91%E5%9D%80%E8%A7%86%E9%A2%91/</guid>
+    <description><![CDATA[you-get是基于Python开发的，实际它不只支持视频下载，还支持图片、音乐等。而且，只要视频的地址，一行代码即可。 安装you-get 安]]></description>
+</item></channel>
+</rss>

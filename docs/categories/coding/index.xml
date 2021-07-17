@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Coding - 分类 - Ray&#39;s Blog</title>
+        <link>https://rayyu999.github.io/categories/coding/</link>
+        <description>Coding - 分类 - Ray&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuyingwai@outlook (Ray)</managingEditor>
+            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 23 Dec 2020 22:48:07 &#43;0000</lastBuildDate><atom:link href="https://rayyu999.github.io/categories/coding/" rel="self" type="application/rss+xml" /><item>
+    <title>RESTful api 设计规范</title>
+    <link>https://rayyu999.github.io/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/</link>
+    <pubDate>Wed, 23 Dec 2020 22:48:07 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/</guid>
+    <description><![CDATA[<p>目前比较流行的一套接口规范就是 RESTful api，REST（Representational State Transfer）,中文翻译叫&quot;表述性状态转移&quot;,它首次出现在 2000 年 Roy Fielding 的博士论文中，Roy Fielding 是 HTTP 规范的主要编写者之一。他在论文中提到：&ldquo;我这篇文章的写作目的，就是想在符合架构原理的前提下，理解和评估以网络为基础的应用软件的架构设计，得到一个功能强、性能好、适宜通信的架构。REST 指的是一组架构约束条件和原则。&ldquo;如果一个架构符合 REST 的约束条件和原则，我们就称它为 RESTful 架构，REST 其实并没有创造新的技术、组件或服务，在我的理解中，它更应该是一种理念、一种思想，利用 Web 的现有特征和能力，更好地诠释和体现现有 web 标准中的一些准则和约束。</p>]]></description>
+</item><item>
+    <title>Mybatis Generator 使用</title>
+    <link>https://rayyu999.github.io/mybatis-generator-%E4%BD%BF%E7%94%A8/</link>
+    <pubDate>Fri, 20 Nov 2020 22:11:17 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/mybatis-generator-%E4%BD%BF%E7%94%A8/</guid>
+    <description><![CDATA[MyBatis Generator工具用于将数据库中的表反转成对应的 Domain、XML文件 和 对应的 DAO Java文件。 引入依赖 在 pom.xml 中添加下面的配置： 1 2 3 4]]></description>
+</item></channel>
+</rss>
