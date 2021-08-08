@@ -1,7 +1,5 @@
-# GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks
+# 论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks
 
-
-# GALA: Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks
 
 *NDSS 2021*
 
@@ -23,7 +21,7 @@
 
 假设现在有明文矩阵 $\boldsymbol{w}$​​ 和密文向量 $[\boldsymbol{x}]_c$​，矩阵维度为 $n_o \times n_i$，向量长度为 $n_i$。
 
-![](https://images.yingwai.top/picgo/20210726155358.png)
+![](https://images.yingwai.top/picgo/20210808224256.png)
 
 1. 首先将矩阵拆分成 $n_o$ 个行向量；
 2. 然后分别计算这 $n_o$ 个行向量与 $[\boldsymbol{x}]_c$​​ 的内积，得到 $n_o$ 个向量 $[\boldsymbol{u}_0]_c, \ \dots$；

@@ -5,12 +5,12 @@
         <description>PPML - 标签 - Ray&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuyingwai@outlook (Ray)</managingEditor>
             <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Aug 2021 10:50:58 &#43;0800</lastBuildDate><atom:link href="https://rayyu999.github.io/tags/ppml/" rel="self" type="application/rss+xml" /><item>
-    <title>GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</title>
+    <title>论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</title>
     <link>https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/</link>
     <pubDate>Sat, 07 Aug 2021 10:50:58 &#43;0800</pubDate>
     <author>作者</author>
     <guid>https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/</guid>
-    <description><![CDATA[GALA: Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于]]></description>
+    <description><![CDATA[NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于HE的线性计算包括三]]></description>
 </item><item>
     <title>PPML中的2PC对比3PC</title>
     <link>https://rayyu999.github.io/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/</link>

@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks - Ray&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks" />
-<meta property="og:description" content="GALA: Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于" />
+        <title>论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks - Ray&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks" />
+<meta property="og:description" content="NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于HE的线性计算包括三" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" /><meta property="og:image" content="https://rayyu999.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-08-07T10:50:58+08:00" />
@@ -15,8 +15,8 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://rayyu999.github.io/logo.png"/>
 
-<meta name="twitter:title" content="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"/>
-<meta name="twitter:description" content="GALA: Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于"/>
+<meta name="twitter:title" content="论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"/>
+<meta name="twitter:description" content="NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于HE的线性计算包括三"/>
 <meta name="application-name" content="Ray&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Ray&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -24,12 +24,12 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks",
+        "headline": "论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks",
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/rayyu999.github.io\/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks\/"
-        },"image": ["https:\/\/rayyu999.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "PPML, HE","wordcount":  4483 ,
+        },"image": ["https:\/\/rayyu999.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "PPML, HE","wordcount":  4473 ,
         "url": "https:\/\/rayyu999.github.io\/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks\/","datePublished": "2021-08-07T10:50:58+08:00","dateModified": "2021-08-07T10:50:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Ray","logo": "https:\/\/rayyu999.github.io\/images\/avatar.png"},"author": {
@@ -104,10 +104,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Ray</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/papers/"><i class="far fa-folder fa-fw"></i>Papers</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-07">2021-08-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4483 字&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" class="leancloud_visitors" data-flag-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-07">2021-08-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4473 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" class="leancloud_visitors" data-flag-title="论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
                     </span>&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
@@ -145,8 +145,7 @@
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><h1 id="gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks">GALA: Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</h1>
-<p><em>NDSS 2021</em></p>
+            </div><div class="content" id="content"><p><em>NDSS 2021</em></p>
 <p><em>Qiao Zhang, Chunsheng Xin, and Hongyi Wu</em></p>
 <h2 id="系统描述">系统描述</h2>
 <p>本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于HE的线性计算包括三个基本运算：<strong>同态加法(ADD)</strong>、<strong>乘法(MULT)<strong>和</strong>置换(PERM)</strong>。本研究表明，线性计算在总的计算开销中占主导地位，而基于HEs的线性计算中最耗时的部分是一系列更详细的PERM运算来实现点积和卷积。Gala的目标是最大限度地减少PERM操作，从而大大减少总体计算时间。我们把基于HE的线性计算看作是一系列的加法、乘法和PERM运算。线性计算的两个输入是来自客户端的加密向量(或通道)和来自服务器的明文权重矩阵(或核)。输出是加密的点积(或卷积)。每一步的目标是按照ADD、MULT和PERM的降序优先级选择最有效的操作。因此，GALA可以有效地减少基于HE域的线性计算的开销。最近的隐私保护神经网络框架可以将Gala集成为即插即用模块，以进一步提高它们的效率。我们还分析了GALA的(更好的)噪声管理和(保证的)系统安全性。</p>
@@ -157,11 +156,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://images.yingwai.top/picgo/20210726155358.png"
-        data-srcset="https://images.yingwai.top/picgo/20210726155358.png, https://images.yingwai.top/picgo/20210726155358.png 1.5x, https://images.yingwai.top/picgo/20210726155358.png 2x"
+        data-src="https://images.yingwai.top/picgo/20210808224256.png"
+        data-srcset="https://images.yingwai.top/picgo/20210808224256.png, https://images.yingwai.top/picgo/20210808224256.png 1.5x, https://images.yingwai.top/picgo/20210808224256.png 2x"
         data-sizes="auto"
-        alt="https://images.yingwai.top/picgo/20210726155358.png"
-        title="https://images.yingwai.top/picgo/20210726155358.png" /></p>
+        alt="https://images.yingwai.top/picgo/20210808224256.png"
+        title="https://images.yingwai.top/picgo/20210808224256.png" /></p>
 <ol>
 <li>首先将矩阵拆分成 $n_o$ 个行向量；</li>
 <li>然后分别计算这 $n_o$ 个行向量与 $[\boldsymbol{x}]_c$​​ 的内积，得到 $n_o$ 个向量 $[\boldsymbol{u}_0]_c, \ \dots$；</li>
@@ -530,7 +529,7 @@
                             <a class="link-to-markdown" href="/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/index.md" target="_blank">阅读原始文档</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks" data-hashtags="PPML,HE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-hashtag="PPML"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i class="fab fa-weibo fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks" data-hashtags="PPML,HE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-hashtag="PPML"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i class="fab fa-weibo fa-fw"></i></a></span>
             </div>
         </div>
     </div>
