@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks - Ray&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks" />
+<meta property="og:description" content="GALA: Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" /><meta property="og:image" content="https://rayyu999.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-08-07T10:50:58+08:00" />
+<meta property="article:modified_time" content="2021-08-07T10:50:58+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rayyu999.github.io/logo.png"/>
+
+<meta name="twitter:title" content="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"/>
+<meta name="twitter:description" content="GALA: Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于"/>
+<meta name="application-name" content="Ray&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Ray&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" /><link rel="prev" href="https://rayyu999.github.io/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/rayyu999.github.io\/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks\/"
+        },"image": ["https:\/\/rayyu999.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "PPML, HE","wordcount":  4483 ,
+        "url": "https:\/\/rayyu999.github.io\/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks\/","datePublished": "2021-08-07T10:50:58+08:00","dateModified": "2021-08-07T10:50:58+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Ray","logo": "https:\/\/rayyu999.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Ray"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ray&#39;s Blog"><span class="header-title-pre"><i class='fas fa-fish'></i></span>Ray&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ray&#39;s Blog"><span class="header-title-pre"><i class='fas fa-fish'></i></span>Ray&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Ray</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/papers/"><i class="far fa-folder fa-fw"></i>Papers</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-08-07">2021-08-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 4483 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 9 分钟&nbsp;<span id="/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" class="leancloud_visitors" data-flag-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#系统描述">系统描述</a>
+      <ul>
+        <li><a href="#row-encoding-share-ras-matrix-vector-multiplication">Row-encoding-share-RaS Matrix-Vector Multiplication</a>
+          <ul>
+            <li><a href="#朴素方法">朴素方法</a></li>
+            <li><a href="#混合计算gazelle">混合计算（GAZELLE）</a></li>
+            <li><a href="#行编码-共享-ras乘法gala">行编码-共享-RAS乘法（GALA）</a></li>
+            <li><a href="#三者对比">三者对比</a></li>
+          </ul>
+        </li>
+        <li><a href="#kernel-grouping-based-convolution">Kernel Grouping Based Convolution</a>
+          <ul>
+            <li><a href="#基础的-siso-卷积">基础的 SISO 卷积</a></li>
+            <li><a href="#基于输出旋转的-mimo-卷积gazelle">基于输出旋转的 MIMO 卷积（GAZELLE）</a></li>
+            <li><a href="#基于核分组的-mimo-卷积gala">基于核分组的 MIMO 卷积（GALA）</a></li>
+            <li><a href="#两者对比">两者对比</a></li>
+          </ul>
+        </li>
+        <li><a href="#噪音管理">噪音管理</a>
+          <ul>
+            <li><a href="#矩阵-向量乘法">矩阵-向量乘法</a></li>
+            <li><a href="#卷积">卷积</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks">GALA: Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</h1>
+<p><em>NDSS 2021</em></p>
+<p><em>Qiao Zhang, Chunsheng Xin, and Hongyi Wu</em></p>
+<h2 id="系统描述">系统描述</h2>
+<p>本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于HE的线性计算包括三个基本运算：<strong>同态加法(ADD)</strong>、<strong>乘法(MULT)<strong>和</strong>置换(PERM)</strong>。本研究表明，线性计算在总的计算开销中占主导地位，而基于HEs的线性计算中最耗时的部分是一系列更详细的PERM运算来实现点积和卷积。Gala的目标是最大限度地减少PERM操作，从而大大减少总体计算时间。我们把基于HE的线性计算看作是一系列的加法、乘法和PERM运算。线性计算的两个输入是来自客户端的加密向量(或通道)和来自服务器的明文权重矩阵(或核)。输出是加密的点积(或卷积)。每一步的目标是按照ADD、MULT和PERM的降序优先级选择最有效的操作。因此，GALA可以有效地减少基于HE域的线性计算的开销。最近的隐私保护神经网络框架可以将Gala集成为即插即用模块，以进一步提高它们的效率。我们还分析了GALA的(更好的)噪声管理和(保证的)系统安全性。</p>
+<h3 id="row-encoding-share-ras-matrix-vector-multiplication">Row-encoding-share-RaS Matrix-Vector Multiplication</h3>
+<p>首先是矩阵-向量乘法，这里考虑的场景是服务器拥有明文参数矩阵，要与来自客户端的加密向量相乘。</p>
+<h4 id="朴素方法">朴素方法</h4>
+<p>假设现在有明文矩阵 $\boldsymbol{w}$​​ 和密文向量 $[\boldsymbol{x}]_c$​，矩阵维度为 $n_o \times n_i$，向量长度为 $n_i$。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/20210726155358.png"
+        data-srcset="https://images.yingwai.top/picgo/20210726155358.png, https://images.yingwai.top/picgo/20210726155358.png 1.5x, https://images.yingwai.top/picgo/20210726155358.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/20210726155358.png"
+        title="https://images.yingwai.top/picgo/20210726155358.png" /></p>
+<ol>
+<li>首先将矩阵拆分成 $n_o$ 个行向量；</li>
+<li>然后分别计算这 $n_o$ 个行向量与 $[\boldsymbol{x}]_c$​​ 的内积，得到 $n_o$ 个向量 $[\boldsymbol{u}_0]_c, \ \dots$；</li>
+<li>对上一步得到的每个向量，都通过 $\log_2n_i$​​ 个 RaS 操作进行计算：
+<ul>
+<li>将向量的副本中的每个元素往前移动 $\frac{n_i}{2}$ 个位置，再把移动后的向量副本与原副本相加；</li>
+<li>将向量的副本中的每个元素往前移动 $\frac{n_i}{4}$​​ 个位置，再把移动后的向量副本与原副本相加；</li>
+<li>&hellip;</li>
+<li>重复上述操作直到移动的位数为0。</li>
+</ul>
+</li>
+</ol>
+<p>最后可以得到 $n_o$ 个向量，每个向量中第一个位置的值即为 $\boldsymbol{w}$ 中对应行与 $[\boldsymbol{x}]_c$​ 进行向量乘法的结果。​</p>
+<p><strong>各操作次数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>ScMult</th>
+<th>Perm</th>
+<th>Add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$n_o$</td>
+<td>$n_o \log_2 n_i$</td>
+<td>$n_o \log_2 n_i$</td>
+</tr>
+</tbody>
+</table>
+<p>这种方法对密文空间利用率很低，导致线性计算效率非常低。</p>
+<h4 id="混合计算gazelle">混合计算（GAZELLE）</h4>
+<p>为了充分利用密文中的 $n$​​ 个时隙并进一步降低复杂度，最先进的方案是通过利用在FC（全连接）层中 $n_o$ 通常远小于 $n_i$​ 的性质来组合对角编码和RaS。这种混合方法表明，昂贵的PERM操作的数量是关于 $n_i$​ 的函数而不是关于 $n_o$​ 的函数，因此加速了FC层的计算。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/20210726162750.png"
+        data-srcset="https://images.yingwai.top/picgo/20210726162750.png, https://images.yingwai.top/picgo/20210726162750.png 1.5x, https://images.yingwai.top/picgo/20210726162750.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/20210726162750.png"
+        title="https://images.yingwai.top/picgo/20210726162750.png" /></p>
+<ol>
+<li>先把 $\boldsymbol{w}$ 用对角线编码的方式进行编码，如上图的 Step(a)；</li>
+<li>再将 $[\boldsymbol{x}]_c$ 旋转 $n_o - 1$​ 次，加上原向量得到 $n_o$ 个向量；</li>
+<li>将编码后的矩阵中得 $n_o$​ 个行向量与旋转得到的 $n_o$​​ 个向量分别作向量内积；</li>
+<li>把上一步中得到的两个内积结果向量相加，再通过RaS操作即可获得最终结果。</li>
+</ol>
+<p><strong>各操作次数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>ScMult</th>
+<th>HstPerm</th>
+<th>Perm</th>
+<th>Add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\frac{n_i n_o}{n}$​</td>
+<td>$\frac{n_i n_o}{n} - 1$</td>
+<td>$\log_2 \frac{n}{n_o}$</td>
+<td>$\frac{n_i n_o}{n} + \log_2 \frac{n}{n_o} - 1$​</td>
+</tr>
+</tbody>
+</table>
+<p>只有一个输出密文，与朴素方法相比，有效地提高了时隙利用率。</p>
+<h4 id="行编码-共享-ras乘法gala">行编码-共享-RAS乘法（GALA）</h4>
+<p>本文提出的GALA框架是基于对混合方法的两个观察结果。首先，混合方法在PERM和HstPerm操作之间进行了权衡，其中PERM的数量(这是最昂贵的HE操作)与密文中的槽数量成正比。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/20210727153511.png"
+        data-srcset="https://images.yingwai.top/picgo/20210727153511.png, https://images.yingwai.top/picgo/20210727153511.png 1.5x, https://images.yingwai.top/picgo/20210727153511.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/20210727153511.png"
+        title="https://images.yingwai.top/picgo/20210727153511.png" /></p>
+<ol>
+<li>类似地对 $\boldsymbol{w}$ 进行编码，但这次仅仅是隔列把两个行向量进行一次交换；</li>
+<li>将编码后的各个行向量分别与 $[\boldsymbol{x}]_c$ 作内积；</li>
+<li>将得到的第二个向量旋转 $n_o-1$ 个位置，再与第一个向量相加；</li>
+<li>转换为明文下的Ras操作：
+<ul>
+<li>服务器生成一个随机向量，并用上一步得到的结果减去这个随机向量的密文；</li>
+<li>服务器将得到的差发送给客户端；</li>
+<li>客户端解密得到的向量，并在明文下进行RaS操作；</li>
+<li>服务器对随机向量在明文下进行RaS操作。</li>
+</ul>
+</li>
+</ol>
+<p><strong>各操作次数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>ScMult</th>
+<th>Perm</th>
+<th>Add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\frac{n_i n_o}{n}$</td>
+<td>$\frac{n_i n_o}{n} - 1$</td>
+<td>$\frac{n_i n_o}{n} - 1$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="三者对比">三者对比</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Perm</th>
+<th>HstPerm</th>
+<th>ScMult</th>
+<th>Add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>朴素</td>
+<td>$n_o \log_2 n_i$</td>
+<td>$0$</td>
+<td>$n_o$</td>
+<td>$n_o \log_2 n_i$</td>
+</tr>
+<tr>
+<td>GAZELLE</td>
+<td>$\log_2 \frac{n}{n_o}$</td>
+<td>$\frac{n_i n_o}{n} - 1$</td>
+<td>$\frac{n_i n_o}{n}$</td>
+<td>$\frac{n_i n_o}{n} + \log_2 \frac{n}{n_o} - 1$</td>
+</tr>
+<tr>
+<td>GALA</td>
+<td>$\frac{n_i n_o}{n} - 1$</td>
+<td>$0$</td>
+<td>$\frac{n_i n_o}{n}$</td>
+<td>$\frac{n_i n_o}{n} - 1$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kernel-grouping-based-convolution">Kernel Grouping Based Convolution</h3>
+<p>接着是卷积，跟矩阵-向量乘法一样，先从单输入单输出（SISO）的基本卷积开始，再到本文之前最新的、以及本文的多输入多输出（MIMO）方案。</p>
+<p>假设服务器有维度为 $k_w \times k_h \times c_i$​ 的卷积核，并且客户端将维度为 $u_w \times u_h$ 的加密数据发送给服务器，服务器需要计算卷积核与加密数据的同态卷积。</p>
+<h4 id="基础的-siso-卷积">基础的 SISO 卷积</h4>
+<p>SISO是MIMO的一个特殊情况：$c_i = c_o = 1$，如下图，加密数据 $[\boldsymbol{x}]_c$ 维度为 $u_w \times u_h$，卷积核 $\mathsf{K}$ 维度为 $k_w \times k_h$。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/20210727161835.png"
+        data-srcset="https://images.yingwai.top/picgo/20210727161835.png, https://images.yingwai.top/picgo/20210727161835.png 1.5x, https://images.yingwai.top/picgo/20210727161835.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/20210727161835.png"
+        title="https://images.yingwai.top/picgo/20210727161835.png" /></p>
+<p>卷积过程可以可视化为将 $\mathsf{K}$ 放在输入数据 $[\boldsymbol{x}]_c$ 的不同位置，然后在每个位置计算卷积核与窗口内的相应数据值之间的元素乘积之和。如上图，首先是将 F5 放在 M1 的位置，然后一直移动 $\mathsf{K}$​，把 F5 放在 M2 到 M9 的位置去计算不同窗口的卷积。</p>
+<p>卷积通过以下步骤获得：</p>
+<ol>
+<li>根据相应位置处的部分和形成核系数 $\mathsf{f_j}$，如上图 Step(b)；</li>
+<li>用相应的核系数与9个旋转后的 $\mathsf{π_j}$​ 作内积；</li>
+<li>最后把上一步的9个内积结果相加起来。</li>
+</ol>
+<p>对第一步的理解：</p>
+<ul>
+<li>核系数 $\mathsf{f_j}$ 的生成是根据对应元素能影响到数据中的元素位置决定的：具体就是会对哪个元素产生影响，对应的位置就不为0。比如上图中的 F7，它在运算过程中能对 M2、M3、M5、M6 产生影响，因此对应的核系数就是这四个位置有值；</li>
+<li>$\mathsf{π_j}$​​​​ 是根据核系数对应元素要与谁运算来生成的：具体就是根据对应的核系数的元素要与哪些元素作乘法，就把这些元素通过旋转移动到对应的位置。比如上图中要与 F7 进行计算的元素是 M4、M5、M7、M8，那么就是通过旋转操作将他们推到右上角。</li>
+</ul>
+<p><strong>各操作次数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>HstPerm</th>
+<th>ScMult</th>
+<th>Add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$k_wk_h - 1$</td>
+<td>$k_wk_h$</td>
+<td>$k_wk_h - 1$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="基于输出旋转的-mimo-卷积gazelle">基于输出旋转的 MIMO 卷积（GAZELLE）</h4>
+<p>现在考虑更一般的情况即MIMO，其中 $c_i$​​ 或 $c_o$​​​ 不为1。简单的方法就是把 $c_i$​​ 个输入频道加密成 $c_i$​​ 个密文，$c_o$​​ 个卷积核每个都包括 $c_i$​​​ 个滤波器。通过 SISO 将每个密文与每个滤波器作卷积，再把 $c_i$​ 个结果相加得到卷积。因此，朴素方法的各操作次数为：</p>
+<table>
+<thead>
+<tr>
+<th>HstPerm</th>
+<th>ScMult</th>
+<th>Add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$c_i(k_wk_h - 1)$​</td>
+<td>$c_ic_ok_wk_h$​</td>
+<td>$c_o(c_ik_wk_h - 1)$​</td>
+</tr>
+</tbody>
+</table>
+<p>假设密文中的时隙 $n$ 的数量通常大于信道大小 $u_wu_h$​，则共同输出密文中的密文利用率（输出期望结果的有意义的时隙）很低。</p>
+<p>为了提高 MIMO 卷积的密文利用率和计算效率，现有的方法（输出旋转[38]）首先将 $c_n$​​ 通道的输入数据打包成一个密文，从而得到 $\frac{c_i}{c_n}$​​ 个输入密文（如下图，其中四个输入通道形成两个密文，每个密文包括两个通道）。同时，将 $c_o$​​ 个卷积核看作是 $c_o \times c_i$​​ 块，块的每一行包括一个卷积核的 $c_i$​​ 个2D滤波器。然后，将MIMO卷积视为矩阵向量乘法，其中元素乘法被卷积取代。由于每个密文有 $c_n$​​ 个通道，所以内核块被分成 $\frac{c_oc_i}{c^2_n}$​​ 个块（如下图中的 Step(a)，其中卷积核块被分成 $\mathsf{K1}$​​ 到 $\mathsf{K4}$​）。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/20210729155903.png"
+        data-srcset="https://images.yingwai.top/picgo/20210729155903.png, https://images.yingwai.top/picgo/20210729155903.png 1.5x, https://images.yingwai.top/picgo/20210729155903.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/20210729155903.png"
+        title="https://images.yingwai.top/picgo/20210729155903.png" /></p>
+<p>因为是想要利用类似上面提到的混合计算方法来计算，所以 Step(a) 中也按着混合计算中的方法，根据输入向量的维度，把矩阵分成了多个块。</p>
+<p>这样每个输入密文可以通过 SISO 直接与每个划分块中的向量卷积，并且每个划分块的卷积是通过将卷积向量旋转到与对角线向量相同的核阶数并求和来获得的（见 Step(b)）。</p>
+<p>最后通过 Perm 和 Add 操作得到了最终的 $\frac{c_o}{c_n}$ 个输出密文。在这个过程中，对于 $\frac{c_oc_i}{c^2_n}$ 个块中的每一个，一共有 $c_n$​​ 个类似 SISO 的卷积操作。根据上面对 SISO 的分析以及图中的步骤，每个块需要</p>
+<ul>
+<li>$c_nk_wk_h$​ 个 ScMult 操作</li>
+<li>$c_n - 1$​ 个 Perm 操作</li>
+<li>$c_n(k_wk_h-1)+c_n - 1 = c_nk_wk_h - 1$​ 个 Add 操作</li>
+</ul>
+<p>然后根据卷积核的分块方式，同一个卷积核中的不同滤波器被分到了 $\frac{c_i}{c_n}$​​​​​ 个块中，因此他们还需要进行相加来获得对应卷积核最终的计算结果，同一个卷积核中的不同滤波器需要相加 $\frac{c_i}{c_n} - 1$​​​ 次，而不同的卷积核被分进了 $\frac{c_o}{c_n}$​​​ ​个块中，因此这个部分需要的相加次数为 $(\frac{c_i}{c_n} - 1) \frac{c_o}{c_n}$​​，加上每个块所需的相加次数，总的相加次数为：</p>
+<div>$$ \begin{align}
+\frac{c_oc_i}{c^2_n}(c_nk_wk_h - 1) + (\frac{c_i}{c_n} - 1) \frac{c_o}{c_n} = \frac{c_o}{c_n}(c_ik_wk_h - 1)
+\end{align} $$ </div>
+<p>而根据朴素方法的 HstPerm 次数为 $c_i(k_wk_h - 1)$​​，因此本方法的 HstPerm 次数为 $\frac{c_i(k_wk_h - 1)}{c_n}$​​​。</p>
+<p><strong>各操作次数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>Perm</th>
+<th>HstPerm</th>
+<th>ScMult</th>
+<th>Add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\frac{c_ic_o}{c^2_n}(c_n-1)$</td>
+<td>$\frac{c_i}{c_n}(k_wk_h - 1)$​</td>
+<td>$k_wk_h \frac{c_ic_o}{c_n}$</td>
+<td>$\frac{c_o}{c_n}(c_ik_wk_h - 1)$​</td>
+</tr>
+</tbody>
+</table>
+<h4 id="基于核分组的-mimo-卷积gala">基于核分组的 MIMO 卷积（GALA）</h4>
+<p>对于上面的 MIMO 卷积的一个关键观察是，$\frac{c_oc_i}{c^2_n}$ 个块中的每一个需要 $c_n-1$ 个昂贵的PERM运算来获得该块的卷积，然而实际上不需要得到每个块的卷积。由于我们的目标是获得每个卷积核的卷积，因此在我们提出的 first-Add-second-Perm 方法（内核分组）中组合与相同内核相关联的块，以降低 PERM 成本。具体地说，在下图的 Step(a) 中，整个内核块被分成两个块 $\mathsf{K1}$ 和 $\mathsf{K2}$，使得每个块是对应于相同核（即 $\mathsf{K1}$ 中的第一、第二个卷积核以及 $\mathsf{K2}$​ 中的第三和第四个卷积核）的 $\frac{c_i}{c_n} $​ 个被划分为含有 $c_n$ 个元素的块的组合。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/20210730164000.png"
+        data-srcset="https://images.yingwai.top/picgo/20210730164000.png, https://images.yingwai.top/picgo/20210730164000.png 1.5x, https://images.yingwai.top/picgo/20210730164000.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/20210730164000.png"
+        title="https://images.yingwai.top/picgo/20210730164000.png" /></p>
+<p>对于每个新形成的块，所有向量首先通过类 SISO 卷积与相应的输入密文卷积。然后将与同一个卷积核相关联的卷积向量相加在一起（见上图 Step(b) 中旋转之前的卷积向量相加）。最后，将这些相加的向量旋转到相同的核阶数并求和，以获得卷积结果（见上图 Step(b) 中每个块的旋转和最终相加）。</p>
+<p>核分组计算需要对 $\frac{c_o}{c_n}$​ 个块中的每个进行 $c_n - 1$​​ 次 Perm 操作，比 GAZELLE 减少了 $\frac{c_i}{c_n}$​ 倍。因为对于最先进的神经网络，$\frac{c_i}{c_n}$ 可以达到 256，因此这种效率提升是可观的。</p>
+<p>与上面讨论的基于输出旋转的 MIMO 卷积方案类似，该方案中有两个输出密文。对于每一个新形成的块，都有 $c_i$​​ 个类 SISO 卷积。然后，对于每一个 $c_n$​​ 核阶，都有 $\frac{c_i}{c_n}$​​ 个卷积需要求和，这里需要 $c_n$​​ 个 Add 操作。这些相加的卷积被进一步旋转到相同的核阶数，并相加以得到最终的卷积。因此所提出的 MIMO 卷积总共需要 $\frac{c_o}{c_n}(c_n-1)$​​ 个 Perm 操作、$\frac{c_i}{c_n}(k_wk_h - 1)$​​ 个 HstPerm 操作、$k_wk_h \frac{c_ic_o}{c_n}$​​ 个 ScMult 操作和 $\frac{c_o}{c_n}(c_ik_wk_h - 1)$​​ 个 Add 操作。</p>
+<p><strong>各操作次数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>Perm</th>
+<th>HstPerm</th>
+<th>ScMult</th>
+<th>Add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\frac{c_o}{c_n}(c_n-1)$​</td>
+<td>$\frac{c_i}{c_n}(k_wk_h - 1)$​</td>
+<td>$k_wk_h \frac{c_ic_o}{c_n}$</td>
+<td>$\frac{c_o}{c_n}(c_ik_wk_h - 1)$​</td>
+</tr>
+</tbody>
+</table>
+<h4 id="两者对比">两者对比</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>Perm</th>
+<th>HstPerm</th>
+<th>ScMult</th>
+<th>Add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GAZELLE</td>
+<td>$\frac{c_ic_o}{c^2_n}(c_n-1)$​</td>
+<td>$\frac{c_i}{c_n}(k_wk_h - 1)$</td>
+<td>$k_wk_h \frac{c_ic_o}{c_n}$</td>
+<td>$\frac{c_o}{c_n}(c_ik_wk_h - 1)$</td>
+</tr>
+<tr>
+<td>GALA</td>
+<td>$\frac{c_o}{c_n}(c_n-1)$</td>
+<td>$\frac{c_i}{c_n}(k_wk_h - 1)$</td>
+<td>$k_wk_h \frac{c_ic_o}{c_n}$</td>
+<td>$\frac{c_o}{c_n}(c_ik_wk_h - 1)$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="噪音管理">噪音管理</h3>
+<h4 id="矩阵-向量乘法">矩阵-向量乘法</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>计算后的噪音</th>
+<th>密文数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>朴素</td>
+<td>$n_i \eta_0 \eta_{mult}+(n_i-1)\eta_{rot}$</td>
+<td>$n_o$</td>
+</tr>
+<tr>
+<td>GAZELLE</td>
+<td>$n_i\eta_0\eta_{mult} + [\frac{n_in_o-n}{n_o}\eta_{mult}+\frac{n-n_o}{n_o}]\eta_{rot}$​</td>
+<td>$1$</td>
+</tr>
+<tr>
+<td>GALA</td>
+<td>$\frac{n_in_o}{n}\eta_0\eta_{mult} + (\frac{n_in_o}{n}-1)\eta_{rot}$</td>
+<td>$1$</td>
+</tr>
+</tbody>
+</table>
+<h4 id="卷积">卷积</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>计算后的噪音</th>
+<th>密文数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GAZELLE</td>
+<td>$c_i \eta_\Delta+\frac{c_i}{c_n}(n_i-1)\eta_{rot}$</td>
+<td>$\frac{c_o}{c_n}$​</td>
+</tr>
+<tr>
+<td>GALA</td>
+<td>$c_i \eta_\Delta+\eta_{rot}$</td>
+<td>$\frac{c_o}{c_n}$</td>
+</tr>
+</tbody>
+</table>
+<p>其中 $\eta_\Delta = k_wk_h\eta_{mult}\eta_0 + (k_wk_h-1)\eta_{rot}\eta_{mult}$​。</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-08-07</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks" data-hashtags="PPML,HE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-hashtag="PPML"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" data-title="GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ppml/">PPML</a>,&nbsp;<a href="/tags/he/">HE</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" class="prev" rel="prev" title="RESTful api 设计规范"><i class="fas fa-angle-left fa-fw"></i>RESTful api 设计规范</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Ray</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

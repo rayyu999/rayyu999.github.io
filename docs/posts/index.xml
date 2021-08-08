@@ -4,7 +4,14 @@
         <link>https://rayyu999.github.io/posts/</link>
         <description>所有文章 | Ray&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuyingwai@outlook (Ray)</managingEditor>
-            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 23 Dec 2020 22:48:07 &#43;0000</lastBuildDate><atom:link href="https://rayyu999.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Aug 2021 10:50:58 &#43;0800</lastBuildDate><atom:link href="https://rayyu999.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</title>
+    <link>https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/</link>
+    <pubDate>Sat, 07 Aug 2021 10:50:58 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/</guid>
+    <description><![CDATA[GALA: Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于]]></description>
+</item><item>
     <title>RESTful api 设计规范</title>
     <link>https://rayyu999.github.io/restful-api-%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/</link>
     <pubDate>Wed, 23 Dec 2020 22:48:07 &#43;0000</pubDate>
@@ -67,12 +74,5 @@
     <author>作者</author>
     <guid>https://rayyu999.github.io/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</guid>
     <description><![CDATA[解决乱码+修改字体(微软雅黑) 下载微软雅黑字体,msyh.ttc 添加字体 1 $ cp msyh.ttc ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts 修改系统注册表 1 $ gedit ~/.deepinwine/Deepin-WeChat/system.reg 修改以下两行 1 2 &#34;MS Shell Dlg&#34;=&#34;msyh&#34; &#34;MS Shell Dlg 2&#34;=&#34;msyh&#34; 字体注]]></description>
-</item><item>
-    <title>CCF推荐国际学术会议和期刊目录（网络与信息安全）</title>
-    <link>https://rayyu999.github.io/ccf%E6%8E%A8%E8%8D%90%E5%9B%BD%E9%99%85%E5%AD%A6%E6%9C%AF%E4%BC%9A%E8%AE%AE%E5%92%8C%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</link>
-    <pubDate>Mon, 20 Apr 2020 19:43:26 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://rayyu999.github.io/ccf%E6%8E%A8%E8%8D%90%E5%9B%BD%E9%99%85%E5%AD%A6%E6%9C%AF%E4%BC%9A%E8%AE%AE%E5%92%8C%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</guid>
-    <description><![CDATA[https://www.ccf.org.cn/c/2019-04-25/663625.shtml 中国计算机学会推荐国际学术期刊（网络与信息安全） A类 序号 刊物简称 刊物全称 出版社 网址 1 TDSC IEEE Transactions on Dependable and Secure Computing IEEE http://dblp.uni-trier.de/db/journals/tdsc/ 2 TIFS IEEE Transactions on Information Forensics and Security IEEE http://dblp.uni-trier.de/db/journals/tifs/ 3 Journal of Cryptology Springer http://dblp.uni-trier.de/db/journals/joc/]]></description>
 </item></channel>
 </rss>
