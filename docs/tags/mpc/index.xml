@@ -4,7 +4,16 @@
         <link>https://rayyu999.github.io/tags/mpc/</link>
         <description>MPC - 标签 - Ray&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuyingwai@outlook (Ray)</managingEditor>
-            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Fri, 19 Jun 2020 11:03:28 &#43;0000</lastBuildDate><atom:link href="https://rayyu999.github.io/tags/mpc/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 11 Nov 2020 21:59:55 &#43;0000</lastBuildDate><atom:link href="https://rayyu999.github.io/tags/mpc/" rel="self" type="application/rss+xml" /><item>
+    <title>论文笔记：NPMML - A Framework for Non-interactive Privacy-preserving Multi-party Machine Learning</title>
+    <link>https://rayyu999.github.io/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-npmml-a-framework-for-non-interactive-privacy-preserving-multi-party-machine-learning/</link>
+    <pubDate>Wed, 11 Nov 2020 21:59:55 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-npmml-a-framework-for-non-interactive-privacy-preserving-multi-party-machine-learning/</guid>
+    <description><![CDATA[<p><em>Tong Li, Jin Li, Xiaofeng Chen, Zheli Liu, Wenjing Lou, and Y. Thomas Hou</em></p>
+<p><a href="https://dblp.uni-trier.de/db/journals/tdsc/tdsc17.html" target="_blank" rel="noopener noreffer">TDSC 2020</a></p>
+<p><a href="https://ieeexplore.ieee.org/document/8981947">https://ieeexplore.ieee.org/document/8981947</a></p>]]></description>
+</item><item>
     <title>PPML中的2PC对比3PC</title>
     <link>https://rayyu999.github.io/ppml%E4%B8%AD%E7%9A%842pc%E5%AF%B9%E6%AF%943pc/</link>
     <pubDate>Fri, 19 Jun 2020 11:03:28 &#43;0000</pubDate>

@@ -33,6 +33,15 @@
     <guid>https://rayyu999.github.io/mybatis-generator-%E4%BD%BF%E7%94%A8/</guid>
     <description><![CDATA[MyBatis Generator工具用于将数据库中的表反转成对应的 Domain、XML文件 和 对应的 DAO Java文件。 引入依赖 在 pom.xml 中添加下面的配置： 1 2 3 4]]></description>
 </item><item>
+    <title>论文笔记：NPMML - A Framework for Non-interactive Privacy-preserving Multi-party Machine Learning</title>
+    <link>https://rayyu999.github.io/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-npmml-a-framework-for-non-interactive-privacy-preserving-multi-party-machine-learning/</link>
+    <pubDate>Wed, 11 Nov 2020 21:59:55 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-npmml-a-framework-for-non-interactive-privacy-preserving-multi-party-machine-learning/</guid>
+    <description><![CDATA[<p><em>Tong Li, Jin Li, Xiaofeng Chen, Zheli Liu, Wenjing Lou, and Y. Thomas Hou</em></p>
+<p><a href="https://dblp.uni-trier.de/db/journals/tdsc/tdsc17.html" target="_blank" rel="noopener noreffer">TDSC 2020</a></p>
+<p><a href="https://ieeexplore.ieee.org/document/8981947">https://ieeexplore.ieee.org/document/8981947</a></p>]]></description>
+</item><item>
     <title>Zotero的附件同步</title>
     <link>https://rayyu999.github.io/zotero%E7%9A%84%E9%99%84%E4%BB%B6%E5%90%8C%E6%AD%A5/</link>
     <pubDate>Fri, 10 Jul 2020 23:19:21 &#43;0000</pubDate>
@@ -67,12 +76,5 @@
     <author>作者</author>
     <guid>https://rayyu999.github.io/%E4%B8%8D%E7%BB%8F%E6%84%8F%E4%BC%A0%E8%BE%93oblivious-transfer/</guid>
     <description><![CDATA[设S有一个秘密，想以1/2的概率传递给R，即B有50%的机会收到这个秘密，另外50%的机会什么也没有收到，协议执行完后，B知道自己是否收到了]]></description>
-</item><item>
-    <title>解决Ubuntu deepin-wine微信字体乱码</title>
-    <link>https://rayyu999.github.io/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</link>
-    <pubDate>Fri, 24 Apr 2020 00:30:22 &#43;0000</pubDate>
-    <author>作者</author>
-    <guid>https://rayyu999.github.io/%E8%A7%A3%E5%86%B3ubuntu-deepin-wine%E5%BE%AE%E4%BF%A1%E5%AD%97%E4%BD%93%E4%B9%B1%E7%A0%81/</guid>
-    <description><![CDATA[解决乱码+修改字体(微软雅黑) 下载微软雅黑字体,msyh.ttc 添加字体 1 $ cp msyh.ttc ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts 修改系统注册表 1 $ gedit ~/.deepinwine/Deepin-WeChat/system.reg 修改以下两行 1 2 &#34;MS Shell Dlg&#34;=&#34;msyh&#34; &#34;MS Shell Dlg 2&#34;=&#34;msyh&#34; 字体注]]></description>
 </item></channel>
 </rss>

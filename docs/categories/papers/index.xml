@@ -12,6 +12,15 @@
     <guid>https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/</guid>
     <description><![CDATA[NDSS 2021 Qiao Zhang, Chunsheng Xin, and Hongyi Wu 系统描述 本文提出的GALA系统用于简化隐私保护神经网络模型中的线性计算(即矩阵-向量乘法和卷积)。基于HE的线性计算包括三]]></description>
 </item><item>
+    <title>论文笔记：NPMML - A Framework for Non-interactive Privacy-preserving Multi-party Machine Learning</title>
+    <link>https://rayyu999.github.io/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-npmml-a-framework-for-non-interactive-privacy-preserving-multi-party-machine-learning/</link>
+    <pubDate>Wed, 11 Nov 2020 21:59:55 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-npmml-a-framework-for-non-interactive-privacy-preserving-multi-party-machine-learning/</guid>
+    <description><![CDATA[<p><em>Tong Li, Jin Li, Xiaofeng Chen, Zheli Liu, Wenjing Lou, and Y. Thomas Hou</em></p>
+<p><a href="https://dblp.uni-trier.de/db/journals/tdsc/tdsc17.html" target="_blank" rel="noopener noreffer">TDSC 2020</a></p>
+<p><a href="https://ieeexplore.ieee.org/document/8981947">https://ieeexplore.ieee.org/document/8981947</a></p>]]></description>
+</item><item>
     <title>CCF推荐国际学术会议和期刊目录（网络与信息安全）</title>
     <link>https://rayyu999.github.io/ccf%E6%8E%A8%E8%8D%90%E5%9B%BD%E9%99%85%E5%AD%A6%E6%9C%AF%E4%BC%9A%E8%AE%AE%E5%92%8C%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/</link>
     <pubDate>Mon, 20 Apr 2020 19:43:26 &#43;0000</pubDate>
