@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios - Ray&#39;s Blog</title><meta name="Description" content=""><meta property="og:title" content="论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios" />
+<meta property="og:description" content="Liehuang Zhu, Xiangyun Tang, Meng Shen, Jie Zhang, Xiaojiang Du IEEE Internet of Things Journal https://arxiv.org/abs/2009.09691 摘要：在智能城市的开发中，机器学习(ML)越来越受欢迎，它欣赏从各种物联网(IoT)设备生成的高质量训练数据" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://rayyu999.github.io/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/" /><meta property="og:image" content="https://rayyu999.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-09-13T20:58:30+08:00" />
+<meta property="article:modified_time" content="2021-09-13T20:58:30+08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rayyu999.github.io/logo.png"/>
+
+<meta name="twitter:title" content="论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios"/>
+<meta name="twitter:description" content="Liehuang Zhu, Xiangyun Tang, Meng Shen, Jie Zhang, Xiaojiang Du IEEE Internet of Things Journal https://arxiv.org/abs/2009.09691 摘要：在智能城市的开发中，机器学习(ML)越来越受欢迎，它欣赏从各种物联网(IoT)设备生成的高质量训练数据"/>
+<meta name="application-name" content="Ray&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Ray&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://rayyu999.github.io/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/" /><link rel="prev" href="https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/rayyu999.github.io\/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios\/"
+        },"image": ["https:\/\/rayyu999.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","keywords": "PPML, HE","wordcount":  2318 ,
+        "url": "https:\/\/rayyu999.github.io\/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios\/","datePublished": "2021-09-13T20:58:30+08:00","dateModified": "2021-09-13T20:58:30+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Ray","logo": "https:\/\/rayyu999.github.io\/images\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "Ray"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ray&#39;s Blog"><span class="header-title-pre"><i class='fas fa-fish'></i></span>Ray&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ray&#39;s Blog"><span class="header-title-pre"><i class='fas fa-fish'></i></span>Ray&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/dillonzq/LoveIt" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Ray</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/papers/"><i class="far fa-folder fa-fw"></i>Papers</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-09-13">2021-09-13</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 2318 字&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 5 分钟&nbsp;<span id="/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/" class="leancloud_visitors" data-flag-title="论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;次阅读
+                    </span>&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#related-work">RELATED WORK</a></li>
+    <li><a href="#system-overview">SYSTEM OVERVIEW</a>
+      <ul>
+        <li><a href="#system-model">System Model</a></li>
+        <li><a href="#threat-model">Threat Model</a></li>
+      </ul>
+    </li>
+    <li><a href="#buildingblocks-based-on-partial-homomorphic-encryption">BUILDINGBLOCKS BASED ON PARTIAL HOMOMORPHIC ENCRYPTION</a>
+      <ul>
+        <li><a href="#design-idea">Design Idea</a></li>
+        <li><a href="#building-blocks-for-primitive-operations">Building Blocks for Primitive Operations</a>
+          <ul>
+            <li><a href="#building-block-1-4">Building Block 1-4</a></li>
+            <li><a href="#building-block-5-secure-power-function">Building Block 5 (Secure Power Function)</a></li>
+            <li><a href="#building-block-6-secure-summation">Building Block 6 (Secure Summation)</a></li>
+          </ul>
+        </li>
+        <li><a href="#building-blocks-for-conversion">Building Blocks for Conversion</a>
+          <ul>
+            <li><a href="#building-block-7-converting-cloud-rsa-to-paillier-ebolda-cdot-b_r-to-ebolda-cdot-b_p">Building Block 7 (Converting Cloud-RSA to Paillier ($[e^{\bold{a \cdot b}}]_R$ to $[e^{\bold{a \cdot b}}]_P$))</a></li>
+            <li><a href="#building-block-8-converting-one-paillier-to-another-paillier-m1_p-to-m2_p">Building Block 8 (Converting one Paillier to Another Paillier ($[m]^1_P$ to $[m]^2_P$))</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#privacy-preserving-machine-learning-training-with-heda">PRIVACY-PRESERVING MACHINE LEARNING TRAINING WITH HEDA</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><em><a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Zhu%2C&#43;L" target="_blank" rel="noopener noreffer">Liehuang Zhu</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Tang%2C&#43;X" target="_blank" rel="noopener noreffer">Xiangyun Tang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Shen%2C&#43;M" target="_blank" rel="noopener noreffer">Meng Shen</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Zhang%2C&#43;J" target="_blank" rel="noopener noreffer">Jie Zhang</a>, <a href="https://arxiv.org/search/cs?searchtype=author&amp;query=Du%2C&#43;X" target="_blank" rel="noopener noreffer">Xiaojiang Du</a></em></p>
+<p><em>IEEE Internet of Things Journal</em></p>
+<p><a href="https://arxiv.org/abs/2009.09691">https://arxiv.org/abs/2009.09691</a></p>
+<blockquote>
+<p><strong>摘要</strong>：在智能城市的开发中，机器学习(ML)越来越受欢迎，它欣赏从各种物联网(IoT)设备生成的高质量训练数据集，这自然引发了人们对此类设置中可以提供的隐私保障的质疑。聚合场景中的隐私保护ML训练使模型需求者能够使用从物联网设备收集的敏感物联网数据安全地训练ML模型。现有的解决方案一般都是服务器辅助的，无法应对服务器之间或服务器与数据所有者之间的共谋威胁，与物联网的微妙环境不匹配。提出了一种基于部分同态加密的构建块库的隐私保护ML训练框架HEDA，该框架能够在不依赖不可信服务器的情况下，针对聚合场景构建多个隐私保护的ML训练协议，并在合谋情况下维护安全性。严格的安全性分析表明，所提出的协议能够保护诚实但好奇模型中每个参与者的隐私，并保证大多数合谋情况下的安全性。大量实验验证了HEDA算法的有效性，在保证模型精度的前提下实现了隐私保护的ML训练。</p>
+</blockquote>
+<p><strong>本文贡献：</strong></p>
+<ol>
+<li>为了在密文上训练ML模型而没有精度损失，我们设计了一个基于加法同构加密Paillier[42]和乘法同构加密CloudRSA[43]的构建块库。受排列和组合思想的启发，复杂算法可以分解为几个原始操作，在确定了许多ML训练算法的基础上的一组核心操作之后，我们仔细设计了一个支持每个核心操作的构建块库。</li>
+<li>为了保证合谋情况下的安全性和满足聚合场景下的安全需求，我们设计了另外两个构件，可以将一个算法的输出转换为另一个算法的输入。所有构建块都以可组合的方式设计，并且同时满足功能性和安全性，其中构建块之间的组合的安全性通过模块顺序组合来确保[44]。</li>
+<li>我们实例化了三个隐私保护的ML训练协议：a)LR；b)SVM；c)NB，没有不可信服务器的帮助。据我们所知，我们是第一个在没有任何近似方程的情况下求解隐私保护LR训练中的非线性函数的。</li>
+</ol>
+<h2 id="related-work">RELATED WORK</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/202109100922640.png"
+        data-srcset="https://images.yingwai.top/picgo/202109100922640.png, https://images.yingwai.top/picgo/202109100922640.png 1.5x, https://images.yingwai.top/picgo/202109100922640.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/202109100922640.png"
+        title="https://images.yingwai.top/picgo/202109100922640.png" /></p>
+<h2 id="system-overview">SYSTEM OVERVIEW</h2>
+<h3 id="system-model">System Model</h3>
+<p>作者设想了一个数据驱动的物联网生态系统，如图1所示，包括物联网设备、物联网数据所有者和模型需求者。</p>
+<ol>
+<li>*物联网设备：*它们负责通过无线或有线网络感知和传输有价值的物联网数据。</li>
+<li>*数据所有者：*他们从自己域内的物联网设备收集所有物联网数据。</li>
+<li>*模型需求者：*它想要在从多个数据所有者收集的数据集上训练ML模型。</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/202109131015911.png"
+        data-srcset="https://images.yingwai.top/picgo/202109131015911.png, https://images.yingwai.top/picgo/202109131015911.png 1.5x, https://images.yingwai.top/picgo/202109131015911.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/202109131015911.png"
+        title="https://images.yingwai.top/picgo/202109131015911.png" /></p>
+<p>物联网设备能够通过4G和WiFi等无线网络感知和传输有价值的物联网数据。这些物联网数据涵盖了智能城市中的各种现实应用，从环境变化到生理状况和个人信息。物联网数据所有者从自己域内的物联网设备收集所有数据。在域中存储和收集物联网数据后，物联网设备将在执行Heda协议期间离线，不再参与模型培训。数据所有者接管物联网设备的后续行为。</p>
+<p>本文假设所有参与者都同意Heda去联合训练一个模型，并且每个数据所有者都同意将全局模型发布到服务器。每个数据所有者生成其个人密钥对来加密其数据，模型需求者也持有自己的密钥对用于模型加密。</p>
+<h3 id="threat-model">Threat Model</h3>
+<p>每个数据所有者可以通过诚实地执行预先设置的协议，尽可能多地了解其他数据所有者的敏感数据和模型需求者的模型。模型需求者诚实地遵守协议，但它试图从他了解的值中尽可能多地推断数据所有者的敏感数据。因此，对于任何参与者，本文都假设它是被动的(或诚实但好奇的)对手[53]，也就是说，它确实遵循协议，但它试图从他们学习的价值观中尽可能多地推断其他参与者的隐私。</p>
+<p>所提出的构建块（安全求和除外）处于双方计算设置中，应在诚实但好奇的模型中确保安全。虽然由构建块构建的私有保护ML训练协议是多方协议，其中参与者可以彼此串通以获取更多信息以推断其他参与者的隐私。在本文的解决方案中，最多允许 $(n-1)$ 个数据所有者相互勾结以泄露其他参与者的隐私，最多允许 $(n - 2)$ 数据所有者最多与模型需求者勾结以泄露其他参与者的隐私。请注意，当数据所有者彼此勾结时，他们可以在其联合数据集上计算模型结果。因此，抵御这种极端情况毫无意义。</p>
+<p>本文的模型可能会遇到外部攻击者，他们在传输过程中通过互联网窃听或其他方式非法获取数据。而外部对手可以通过使用现有的通用技术（如TSL）建立保密和可信的通道来控制。</p>
+<h2 id="buildingblocks-based-on-partial-homomorphic-encryption">BUILDINGBLOCKS BASED ON PARTIAL HOMOMORPHIC ENCRYPTION</h2>
+<h3 id="design-idea">Design Idea</h3>
+<p>类似数学公式可以分解为加减乘除的排列组合，ML 训练算法也可以分解为一组核心基本运算。本文就是基于这样的思路设计了一系列安全的计算方法。</p>
+<h3 id="building-blocks-for-primitive-operations">Building Blocks for Primitive Operations</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/202109131046063.png"
+        data-srcset="https://images.yingwai.top/picgo/202109131046063.png, https://images.yingwai.top/picgo/202109131046063.png 1.5x, https://images.yingwai.top/picgo/202109131046063.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/202109131046063.png"
+        title="https://images.yingwai.top/picgo/202109131046063.png" /></p>
+<h4 id="building-block-1-4">Building Block 1-4</h4>
+<p>由于很容易获得安全的加法、减法和乘法，因此本文将它们直接包含在构建块库中。</p>
+<ol>
+<li>Pillier 安全加法</li>
+<li>Pillier 安全减法</li>
+<li>Pillier 明文-密文乘法</li>
+<li>Cloud-RSA 密文乘法</li>
+</ol>
+<p>根据 Pillier 以及 Cloud-RSA 方案的安全性很容易证明 building blocks 1-4 在半诚实设置下是安全的。</p>
+<h4 id="building-block-5-secure-power-function">Building Block 5 (Secure Power Function)</h4>
+<p>假设数据所有者使用他的 Cloud-RSA 公钥加密 $e^\bold{a}$，并将密文 $[e^\bold{a}]_R$ 发送给模型需求者。模型需求者有 $\bold{b} = {b_1, b_2, &hellip;, b_d}$，希望获得 $[e^{\bold{a \cdot b}}]_R$：</p>
+<div>$$\begin{align}
+[e^{\textbf{a} \cdot \textbf{b}}]_R &= [e^{a_1b_1 + a_2b_2 + \cdots +a_db_d}]_R \\
+&= \prod^d_{i=1}[e^{a_ib_i}]_R = \prod^d_{i=1}([e^{a_i}]_R)^{b_i} \tag{1}
+\end{align}$$</div>
+<p>公式(1)定义了本文的安全幂函数。通过这种方式，模型需求者可以通过 $(\sum^d_{i=1} b_i + d - 1)$ 次乘法获得 $[e^{\bold{a \cdot b}}]_R$。</p>
+<h4 id="building-block-6-secure-summation">Building Block 6 (Secure Summation)</h4>
+<p>有 $n$ 个数据拥有者，本文的安全聚合方法可以保证在不泄露各个数据拥有者隐私的情况以及各个数据拥有者密钥不同的情况下完成聚合：</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/202109131447297.png"
+        data-srcset="https://images.yingwai.top/picgo/202109131447297.png, https://images.yingwai.top/picgo/202109131447297.png 1.5x, https://images.yingwai.top/picgo/202109131447297.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/202109131447297.png"
+        title="https://images.yingwai.top/picgo/202109131447297.png" /></p>
+<h3 id="building-blocks-for-conversion">Building Blocks for Conversion</h3>
+<p>由于Heda涉及两个不同的密码系统和多个参与者，使用上述构建块是不够的。本文开发了两个协议，用于将密文从一种加密方案转换为另一种加密方案，同时保持底层明文。</p>
+<h4 id="building-block-7-converting-cloud-rsa-to-paillier-ebolda-cdot-b_r-to-ebolda-cdot-b_p">Building Block 7 (Converting Cloud-RSA to Paillier ($[e^{\bold{a \cdot b}}]_R$ to $[e^{\bold{a \cdot b}}]_P$))</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/202109131508251.png"
+        data-srcset="https://images.yingwai.top/picgo/202109131508251.png, https://images.yingwai.top/picgo/202109131508251.png 1.5x, https://images.yingwai.top/picgo/202109131508251.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/202109131508251.png"
+        title="https://images.yingwai.top/picgo/202109131508251.png" /></p>
+<h4 id="building-block-8-converting-one-paillier-to-another-paillier-m1_p-to-m2_p">Building Block 8 (Converting one Paillier to Another Paillier ($[m]^1_P$ to $[m]^2_P$))</h4>
+<p>在安全聚合中，由于各个数据拥有者的密钥都不一样，因此还需要将用某个数据拥有者密钥加密的密文转换为用另一个数据拥有者密钥加密的密文。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/202109131508328.png"
+        data-srcset="https://images.yingwai.top/picgo/202109131508328.png, https://images.yingwai.top/picgo/202109131508328.png 1.5x, https://images.yingwai.top/picgo/202109131508328.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/202109131508328.png"
+        title="https://images.yingwai.top/picgo/202109131508328.png" /></p>
+<h2 id="privacy-preserving-machine-learning-training-with-heda">PRIVACY-PRESERVING MACHINE LEARNING TRAINING WITH HEDA</h2>
+<p>在这一部分中，将详细介绍如何使用所提出的构建块来构建一个保护隐私的ML训练协议来训练LR模型。受版面限制，本文在完整版[16]中给出了用于训练SVM(协议1)和NB(协议3)的隐私保护ML协议的构造。</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://images.yingwai.top/picgo/202109131513152.png"
+        data-srcset="https://images.yingwai.top/picgo/202109131513152.png, https://images.yingwai.top/picgo/202109131513152.png 1.5x, https://images.yingwai.top/picgo/202109131513152.png 2x"
+        data-sizes="auto"
+        alt="https://images.yingwai.top/picgo/202109131513152.png"
+        title="https://images.yingwai.top/picgo/202109131513152.png" /></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2021-09-13</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://rayyu999.github.io/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/" data-title="论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios" data-hashtags="PPML,HE"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://rayyu999.github.io/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/" data-hashtag="PPML"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://rayyu999.github.io/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/" data-title="论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios"><i class="fab fa-hacker-news fa-fw"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://rayyu999.github.io/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/" data-title="论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@2.14.0/icons/line.svg"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://rayyu999.github.io/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/" data-title="论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios"><i class="fab fa-weibo fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/ppml/">PPML</a>,&nbsp;<a href="/tags/he/">HE</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/" class="prev" rel="prev" title="论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks"><i class="fas fa-angle-left fa-fw"></i>论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.85.0">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.10"><i class="far fa-kiss-wink-heart fa-fw"></i> LoveIt</a>
+                </div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2020 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Ray</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_SVG"></script>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.2.0/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":10},"comment":{"valine":{"appId":"QGzwQXOqs5JOhN4RGPOkR2mR-MdYXbMMI","appKey":"WBmoGyJtbqUswvfLh6L8iEBr","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@5.0.1/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"zh-cn","pageSize":10,"placeholder":"你的评论 ...","recordIP":true,"serverURLs":"https://leancloud.hugoloveit.com","visitor":true}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

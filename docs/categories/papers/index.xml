@@ -4,7 +4,14 @@
         <link>https://rayyu999.github.io/categories/papers/</link>
         <description>Papers - 分类 - Ray&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>yuyingwai@outlook (Ray)</managingEditor>
-            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 07 Aug 2021 10:50:58 &#43;0800</lastBuildDate><atom:link href="https://rayyu999.github.io/categories/papers/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>yuyingwai@outlook (Ray)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 13 Sep 2021 20:58:30 &#43;0800</lastBuildDate><atom:link href="https://rayyu999.github.io/categories/papers/" rel="self" type="application/rss+xml" /><item>
+    <title>论文笔记：Privacy-Preserving Machine Learning Training in IoT Aggregation Scenarios</title>
+    <link>https://rayyu999.github.io/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/</link>
+    <pubDate>Mon, 13 Sep 2021 20:58:30 &#43;0800</pubDate>
+    <author>作者</author>
+    <guid>https://rayyu999.github.io/privacy-preserving-machine-learning-training-in-iot-aggregation-scenarios/</guid>
+    <description><![CDATA[Liehuang Zhu, Xiangyun Tang, Meng Shen, Jie Zhang, Xiaojiang Du IEEE Internet of Things Journal https://arxiv.org/abs/2009.09691 摘要：在智能城市的开发中，机器学习(ML)越来越受欢迎，它欣赏从各种物联网(IoT)设备生成的高质量训练数据]]></description>
+</item><item>
     <title>论文笔记：GALA - Greedy ComputAtion for Linear Algebra in Privacy-Preserved Neural Networks</title>
     <link>https://rayyu999.github.io/gala-greedy-computation-for-linear-algebra-in-privacy-preserved-neural-networks/</link>
     <pubDate>Sat, 07 Aug 2021 10:50:58 &#43;0800</pubDate>
